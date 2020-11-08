@@ -3,10 +3,10 @@ Description=User suspend actions
 Before=sleep.target
 
 [Service]
-User=%I
+User=%i
 Type=forking
 Environment=DISPLAY=:0
-ExecStart=/home/shankar/bin/i3lock-blur-before-suspend
+ExecStart=/home/%i/bin/i3lock-blur-before-suspend
 ExecStartPost=/usr/bin/sleep 1
 
 [Install]
