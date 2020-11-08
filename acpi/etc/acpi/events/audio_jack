@@ -1,0 +1,3 @@
+# Refresh i3blocks in case of jack event
+event=jack/*
+action=/home/shankar/bin/refresh-i3blocks-audio %e
