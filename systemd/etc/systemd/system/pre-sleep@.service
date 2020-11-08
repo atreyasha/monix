@@ -1,0 +1,12 @@
+[Unit]
+Description=User suspend actions
+Before=sleep.target
+
+[Service]
+User=%i
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/home/%i/bin/pre-sleep-hook
+
+[Install]
+WantedBy=sleep.target
