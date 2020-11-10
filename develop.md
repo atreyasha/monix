@@ -4,17 +4,17 @@
 -   [System reproduction logs after basic Arch
     installation](#system-reproduction-logs-after-basic-arch-installation)
     -   [sudo](#sudo)
-    -   [tlp runner](#tlp-runner)
+    -   [tlp-runner](#tlp-runner)
     -   [light](#light)
-    -   [mesa video driver](#mesa-video-driver)
-    -   [udev battery rules](#udev-battery-rules)
-    -   [ufw firewall](#ufw-firewall)
+    -   [mesa-video-driver](#mesa-video-driver)
+    -   [udev-battery-rules](#udev-battery-rules)
+    -   [ufw-firewall](#ufw-firewall)
     -   [openssh](#openssh)
     -   [gnupg](#gnupg)
-    -   [ACPI audio jack](#acpi-audio-jack)
+    -   [acpi-audio-jack](#acpi-audio-jack)
     -   [i3-cycle](#i3-cycle)
-    -   [pre-suspend i3lock workflow](#pre-suspend-i3lock-workflow)
-    -   [early KMS](#early-kms)
+    -   [pre-sleep-i3lock](#pre-sleep-i3lock)
+    -   [early-kms](#early-kms)
     -   [timesync](#timesync)
     -   [fonts](#fonts)
 
@@ -48,7 +48,7 @@ System reproduction logs after basic Arch installation
 
 3.  use `visudo` to prevent any syntax errors
 
-### tlp runner
+### tlp-runner
 
 1.  instal `tlp`
 
@@ -65,18 +65,18 @@ System reproduction logs after basic Arch installation
 2.  add local user to `video` group by running
     `usermod -a -G video shankar`
 
-### mesa video driver
+### mesa-video-driver
 
 1.  install `mesa` package and avoid `xf86-video-intel`
 
-### udev battery rules
+### udev-battery-rules
 
 1.  copy `60-onbattery.rules` and `61-onpower.rules` to
     `/etc/udev/rules.d`
 
 2.  reload rules `sudo udevadm control --reload`
 
-### ufw firewall
+### ufw-firewall
 
 1.  install `ufw`
 
@@ -106,7 +106,7 @@ System reproduction logs after basic Arch installation
 2.  stow `~/.gnupg/gpg-agent` to get relevant agent functionalities and
     cached keys
 
-### ACPI audio jack
+### acpi-audio-jack
 
 1.  install `acpid`
 
@@ -122,7 +122,7 @@ System reproduction logs after basic Arch installation
 2.  move raw python script to `~/bin` because installed script gets
     slowed down due to path regexes
 
-### pre-suspend i3lock workflow
+### pre-sleep-i3lock
 
 1.  all i3lock scripts have `sleep 0.1` to prevent i3 mode red color
     from being captured in screenshot
@@ -148,7 +148,7 @@ System reproduction logs after basic Arch installation
     ensure screen lights up after suspend, in case it was locked and
     dimmed earlier
 
-### early KMS
+### early-kms
 
 1.  add `MODULES=(intel_agp i915)` to `/etc/mkinitcpio.conf`
 

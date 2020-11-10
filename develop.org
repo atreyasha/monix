@@ -12,19 +12,19 @@
 ***** install =sudo=
 ***** add or uncomment the following =%wheel      ALL=(ALL) ALL= to allow for wheel users to access sudo
 ***** use =visudo= to prevent any syntax errors
-*** tlp runner
+*** tlp-runner
 ***** instal =tlp= 
 ***** copy existing =tlp.conf= to =/etc/tlp.conf= for disabling bluetooth, wifi and wwan at startup
 ***** run =sudo systemctl enable tlp.service= and =sudo systemctl start tlp.service=  
 *** light
 ***** install =light= for managing backlight
 ***** add local user to =video= group by running =usermod -a -G video shankar=  
-*** mesa video driver
+*** mesa-video-driver
 ***** install =mesa= package and avoid =xf86-video-intel=
-*** udev battery rules
+*** udev-battery-rules
 ***** copy =60-onbattery.rules= and =61-onpower.rules= to =/etc/udev/rules.d=
 ***** reload rules =sudo udevadm control --reload=
-*** ufw firewall
+*** ufw-firewall
 ***** install =ufw= 
 ***** retain default settings that deny incoming requests while allowing outgoing
 ***** run =sudo systemctl enable ufw.service= and =sudo systemctl start ufw.service=
@@ -37,14 +37,14 @@
 *** gnupg
 ***** install =gnupg=
 ***** stow =~/.gnupg/gpg-agent= to get relevant agent functionalities and cached keys
-*** ACPI audio jack
+*** acpi-audio-jack
 ***** install =acpid=
 ***** copy =audio_jack= to =/etc/acpi/events=
 ***** run =sudo sytemctl enable acpid.service= and =sudo sytemctl start acpid.service=
 *** i3-cycle
 ***** run =pip install --user i3-cycle=
 ***** move raw python script to =~/bin= because installed script gets slowed down due to path regexes
-*** pre-suspend i3lock workflow
+*** pre-sleep-i3lock
 ***** all i3lock scripts have =sleep 0.1= to prevent i3 mode red color from being captured in screenshot
 ***** i3lock post-suspend requires =sleep 1= to prevent short real display
 ***** i3lock uses no forking =-n= for simple lock to ensure it does not work in background; this allows dpms changes to persist until unlock
@@ -53,7 +53,7 @@
 ***** run =sudo systemctl enable pre-sleep@$USER.service=, remember to replace =$USER= with the actual user
 ***** suspension after i3lock is delayed if less than or equal to 10 seconds are left before dpms down -> not sure about this but it is possible
 ***** *buggy, needs more testing:* =xset -display :0 dpms force on= to ensure screen lights up after suspend, in case it was locked and dimmed earlier
-*** early KMS
+*** early-kms
 ***** add =MODULES=(intel_agp i915)= to =/etc/mkinitcpio.conf=
 ***** run =sudo mkinitcpio -P=
 *** timesync
@@ -62,4 +62,3 @@
 ***** install =ttf-dejavu=, =ttf-font-awesome=, =otf-font-awesome= and AUR =nerd-fonts-bitstream-vera-mono= for terminal font
 ***** update cache using =fc-cache -fv=
 ***** i3 uses fc-match to find best font which mostly ends up defaulting to =DejaVu Sans=, which is why it appears as a default
-      
