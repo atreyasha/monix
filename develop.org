@@ -1,0 +1,65 @@
+#+STARTUP: overview
+#+OPTIONS: ^:nil
+
+** Tasks
+*** System reproducibility
+***** TODO work on script which returns arch linux OS state to current state using package list backups, dotfile installation scheme and notes for important steps taken from experience -> test this with virtual machine -> perhaps each update backs up package list as well
+***** root files need to be added via hard files, use gnu install for those commands, make simple root install script which uses directory structure for installs
+***** figure how to dump all package names and associated systemd rules which need to be recreated
+
+** System reproduction logs after basic Arch installation
+*** sudo
+***** install =sudo=
+***** add or uncomment the following =%wheel      ALL=(ALL) ALL= to allow for wheel users to access sudo
+***** use =visudo= to prevent any syntax errors
+*** tlp runner
+***** instal =tlp= 
+***** copy existing =tlp.conf= to =/etc/tlp.conf= for disabling bluetooth, wifi and wwan at startup
+***** run =sudo systemctl enable tlp.service= and =sudo systemctl start tlp.service=  
+*** light
+***** install =light= for managing backlight
+***** add local user to =video= group by running =usermod -a -G video shankar=  
+*** mesa video driver
+***** install =mesa= package and avoid =xf86-video-intel=
+*** udev battery rules
+***** copy =60-onbattery.rules= and =61-onpower.rules= to =/etc/udev/rules.d=
+***** reload rules =sudo udevadm control --reload=
+*** ufw firewall
+***** install =ufw= 
+***** retain default settings that deny incoming requests while allowing outgoing
+***** run =sudo systemctl enable ufw.service= and =sudo systemctl start ufw.service=
+***** run =sudo ufw enable= to enable it outside systemd
+*** openssh
+***** install =openssh=
+***** run =systemctl --user enable ssh-agent.service= and =systemctl --user start ssh-agent.service= on local file
+***** =SSH_AUTH_SOCK= environmental variable needs to be set in shellrc
+***** stow =~/.ssh/config= with instructions for adding keys to ssh agent
+*** gnupg
+***** install =gnupg=
+***** stow =~/.gnupg/gpg-agent= to get relevant agent functionalities and cached keys
+*** ACPI audio jack
+***** install =acpid=
+***** copy =audio_jack= to =/etc/acpi/events=
+***** run =sudo sytemctl enable acpid.service= and =sudo sytemctl start acpid.service=
+*** i3-cycle
+***** run =pip install --user i3-cycle=
+***** move raw python script to =~/bin= because installed script gets slowed down due to path regexes
+*** pre-suspend i3lock workflow
+***** all i3lock scripts have =sleep 0.1= to prevent i3 mode red color from being captured in screenshot
+***** i3lock post-suspend requires =sleep 1= to prevent short real display
+***** i3lock uses no forking =-n= for simple lock to ensure it does not work in background; this allows dpms changes to persist until unlock
+***** i3lock was tested with concurrent lock and suspend, and there is a PID check to ensure no double i3locks are created
+***** copy =pre-sleep@.service= to =/etc/systemd/system=
+***** run =sudo systemctl enable pre-sleep@$USER.service=, remember to replace =$USER= with the actual user
+***** suspension after i3lock is delayed if less than or equal to 10 seconds are left before dpms down -> not sure about this but it is possible
+***** *buggy, needs more testing:* =xset -display :0 dpms force on= to ensure screen lights up after suspend, in case it was locked and dimmed earlier
+*** early KMS
+***** add =MODULES=(intel_agp i915)= to =/etc/mkinitcpio.conf=
+***** run =sudo mkinitcpio -P=
+*** timesync
+***** run =sudo systemctl enable systemd-timesyncd.service= in order to sync time
+*** fonts
+***** install =ttf-dejavu=, =ttf-font-awesome=, =otf-font-awesome= and AUR =nerd-fonts-bitstream-vera-mono= for terminal font
+***** update cache using =fc-cache -fv=
+***** i3 uses fc-match to find best font which mostly ends up defaulting to =DejaVu Sans=, which is why it appears as a default
+      
