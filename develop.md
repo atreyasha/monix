@@ -4,6 +4,7 @@
 -   [System reproduction logs after basic Arch
     installation](#system-reproduction-logs-after-basic-arch-installation)
     -   [sudo](#sudo)
+    -   [beep](#beep)
     -   [tlp-runner](#tlp-runner)
     -   [light](#light)
     -   [mesa-video-driver](#mesa-video-driver)
@@ -47,6 +48,11 @@ System reproduction logs after basic Arch installation
     for wheel users to access sudo
 
 3.  use `visudo` to prevent any syntax errors
+
+### beep
+
+1.  disable analog beep
+    `sudo echo "blacklist pcspkr" | tee /etc/modprobe.d/nobeep.conf`
 
 ### tlp-runner
 

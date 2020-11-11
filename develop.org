@@ -12,6 +12,8 @@
 ***** install =sudo=
 ***** add or uncomment the following =%wheel      ALL=(ALL) ALL= to allow for wheel users to access sudo
 ***** use =visudo= to prevent any syntax errors
+*** beep
+***** disable analog beep =sudo echo "blacklist pcspkr" | tee /etc/modprobe.d/nobeep.conf=      
 *** tlp-runner
 ***** instal =tlp= 
 ***** copy existing =tlp.conf= to =/etc/tlp.conf= for disabling bluetooth, wifi and wwan at startup
