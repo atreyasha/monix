@@ -6,7 +6,7 @@
 ***** TODO work on script which returns arch linux OS state to current state using package list backups, dotfile installation scheme and notes for important steps taken from experience -> test this with virtual machine -> perhaps each update backs up package list as well
 ***** root files need to be added via hard files, use gnu install for those commands, make simple root install script which uses directory structure for installs
 ***** figure how to dump all package names and associated systemd rules which need to be recreated
-
+      
 ** System reproduction logs after basic Arch installation
 *** sudo
 ***** install =sudo=
@@ -64,3 +64,9 @@
 ***** install =ttf-dejavu=, =ttf-font-awesome=, =otf-font-awesome= and AUR =nerd-fonts-bitstream-vera-mono= for terminal font
 ***** update cache using =fc-cache -fv=
 ***** i3 uses fc-match to find best font which mostly ends up defaulting to =DejaVu Sans=, which is why it appears as a default
+*** zsh
+***** install =zsh= and use as main shell with =chsh -s /usr/bin/zsh=
+
+** Completed
+***** DONE replace udev rules with local script location for portability
+      CLOSED: [2020-11-12 Thu 14:12]

@@ -18,6 +18,8 @@
     -   [early-kms](#early-kms)
     -   [timesync](#timesync)
     -   [fonts](#fonts)
+    -   [zsh](#zsh)
+-   [Completed](#completed)
 
 Tasks
 -----
@@ -174,3 +176,13 @@ System reproduction logs after basic Arch installation
 
 3.  i3 uses fc-match to find best font which mostly ends up defaulting
     to `DejaVu Sans`, which is why it appears as a default
+
+### zsh
+
+1.  install `zsh` and use as main shell with `chsh -s /usr/bin/zsh`
+
+Completed
+---------
+
+**DONE** replace udev rules with local script location for
+portability
