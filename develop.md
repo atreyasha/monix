@@ -3,6 +3,7 @@
     -   [System reproducibility](#system-reproducibility)
 -   [System reproduction logs after basic Arch
     installation](#system-reproduction-logs-after-basic-arch-installation)
+    -   [linux-lts](#linux-lts)
     -   [sudo](#sudo)
     -   [beep](#beep)
     -   [tlp-runner](#tlp-runner)
@@ -41,6 +42,19 @@ Tasks
 
 System reproduction logs after basic Arch installation
 ------------------------------------------------------
+
+### linux-lts
+
+1.  install `linux-lts` and uninstall `linux` to overcome occasional
+    dark display upon waking from sleep with DP monitor
+
+2.  error message:
+    `kernel: i915 0000:00:02.0: [drm] *ERROR* failed to enable link training`
+
+3.  this bug has not occurred with linux-lts, some discussion shows this
+    could be a resolution: see
+    <https://bbs.archlinux.org/viewtopic.php?id=196370> and
+    <https://www.reddit.com/r/archlinux/comments/4oa926/new_install_intel_dp_start_link_train_i915_failed/>
 
 ### sudo
 
@@ -186,3 +200,5 @@ Completed
 
 **DONE** replace udev rules with local script location for
 portability
+
+**CLOSED:** *\[2020-11-12 Thu 14:12\]*
