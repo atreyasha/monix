@@ -20,10 +20,10 @@
     -   [timesync](#timesync)
     -   [fonts](#fonts)
     -   [zsh](#zsh)
+    -   [avahi and cups](#avahi-and-cups)
 -   [Completed](#completed)
 
-Tasks
------
+## Tasks
 
 ### System reproducibility
 
@@ -33,15 +33,20 @@ Tasks
     this with virtual machine -\> perhaps each update backs up package
     list as well
 
-2.  root files need to be added via hard files, use gnu install for
+2.  use pacdiff hook after system updates to manually fix issues related
+    to new pacman configs -\> need to consider read-only flags and how
+    to solve root vs. user vim configuration
+
+3.  add paccache -rvk2 hook after updates to clear old cache
+
+4.  root files need to be added via hard files, use gnu install for
     those commands, make simple root install script which uses directory
     structure for installs
 
-3.  figure how to dump all package names and associated systemd rules
+5.  figure how to dump all package names and associated systemd rules
     which need to be recreated
 
-System reproduction logs after basic Arch installation
-------------------------------------------------------
+## System reproduction logs after basic Arch installation
 
 ### linux-lts
 
@@ -195,8 +200,11 @@ System reproduction logs after basic Arch installation
 
 1.  install `zsh` and use as main shell with `chsh -s /usr/bin/zsh`
 
-Completed
----------
+### avahi and cups
+
+1.  systemd-level services need to be initialized for this
+
+## Completed
 
 **DONE** replace udev rules with local script location for
 portability
