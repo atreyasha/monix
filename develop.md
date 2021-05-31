@@ -1,8 +1,11 @@
 ## Table of Contents
 -   [Tasks](#tasks)
-    -   [System reproducibility](#system-reproducibility)
--   [System reproduction logs after basic Arch
-    installation](#system-reproduction-logs-after-basic-arch-installation)
+    -   [Migration to NixOS by emulating current
+        build](#migration-to-nixos-by-emulating-current-build)
+    -   [Backup](#backup)
+-   [Reproduction logs for Arch
+    Linux](#reproduction-logs-for-arch-linux)
+    -   [pacman hooks](#pacman-hooks)
     -   [linux-lts](#linux-lts)
     -   [sudo](#sudo)
     -   [beep](#beep)
@@ -21,40 +24,42 @@
     -   [fonts](#fonts)
     -   [zsh](#zsh)
     -   [avahi and cups](#avahi-and-cups)
--   [Completed](#completed)
 
 ## Tasks
 
-### System reproducibility
+### Migration to NixOS by emulating current build
 
-1.  **TODO** work on script which returns arch linux OS state
-    to current state using package list backups, dotfile installation
-    scheme and notes for important steps taken from experience -\> test
-    this with virtual machine -\> perhaps each update backs up package
-    list as well
+1.  **TODO** sort out clipboard pasting into guest system -\>
+    faster configs
 
-2.  use pacdiff hook after system updates to manually fix issues related
-    to new pacman configs -\> need to consider read-only flags and how
-    to solve root vs. user vim configuration
+2.  **TODO** figure out guest additions inside virtualbox
+    basic image
 
-3.  add paccache -rvk2 hook after updates to clear old cache
+3.  add dbus instructions to `.xinitrc`: <https://nixos.wiki/wiki/I3>
 
-4.  root files need to be added via hard files, use gnu install for
-    those commands, make simple root install script which uses directory
-    structure for installs
+4.  figure out how to keep only recent builds and not all
 
-5.  figure how to dump all package names and associated systemd rules
-    which need to be recreated
+### Backup
 
-## System reproduction logs after basic Arch installation
+1.  re-arrange system to keep personal data in single location, which
+    should be backed up regularly
+
+## Reproduction logs for Arch Linux
+
+### pacman hooks
+
+1.  use `pacdiff -o` for checking differences in configuration files
+
+2.  use `paccache -rvk2` to only keep last two caches
 
 ### linux-lts
 
-1.  install `linux-lts` and uninstall `linux` to overcome occasional
-    dark display upon waking from sleep with DP monitor
+1.  install `linux-lts`{.verbatim} and uninstall `linux`{.verbatim} to
+    overcome occasional dark display upon waking from sleep with DP
+    monitor
 
 2.  error message:
-    `kernel: i915 0000:00:02.0: [drm] *ERROR* failed to enable link training`
+    `kernel: i915 0000:00:02.0: [drm] *ERROR* failed to enable link training`{.verbatim}
 
 3.  this bug has not occurred with linux-lts, some discussion shows this
     could be a resolution: see
@@ -63,150 +68,153 @@
 
 ### sudo
 
-1.  install `sudo`
+1.  install `sudo`{.verbatim}
 
-2.  add or uncomment the following `%wheel      ALL=(ALL) ALL` to allow
-    for wheel users to access sudo
+2.  add or uncomment the following
+    `%wheel      ALL=(ALL) ALL`{.verbatim} to allow for wheel users to
+    access sudo
 
-3.  use `visudo` to prevent any syntax errors
+3.  use `visudo`{.verbatim} to prevent any syntax errors
 
 ### beep
 
 1.  disable analog beep
-    `sudo echo "blacklist pcspkr" | tee /etc/modprobe.d/nobeep.conf`
+    `sudo echo "blacklist pcspkr" | tee /etc/modprobe.d/nobeep.conf`{.verbatim}
 
 ### tlp-runner
 
-1.  instal `tlp`
+1.  instal `tlp`{.verbatim}
 
-2.  copy existing `tlp.conf` to `/etc/tlp.conf` for disabling bluetooth,
-    wifi and wwan at startup
+2.  copy existing `tlp.conf`{.verbatim} to `/etc/tlp.conf`{.verbatim}
+    for disabling bluetooth, wifi and wwan at startup
 
-3.  run `sudo systemctl enable tlp.service` and
-    `sudo systemctl start tlp.service`
+3.  run `sudo systemctl enable tlp.service`{.verbatim} and
+    `sudo systemctl start tlp.service`{.verbatim}
 
 ### light
 
-1.  install `light` for managing backlight
+1.  install `light`{.verbatim} for managing backlight
 
-2.  add local user to `video` group by running
-    `usermod -a -G video shankar`
+2.  add local user to `video`{.verbatim} group by running
+    `usermod -a -G video shankar`{.verbatim}
 
 ### mesa-video-driver
 
-1.  install `mesa` package and avoid `xf86-video-intel`
+1.  install `mesa`{.verbatim} package and avoid
+    `xf86-video-intel`{.verbatim}
 
 ### udev-battery-rules
 
-1.  copy `60-onbattery.rules` and `61-onpower.rules` to
-    `/etc/udev/rules.d`
+1.  copy `60-onbattery.rules`{.verbatim} and
+    `61-onpower.rules`{.verbatim} to `/etc/udev/rules.d`{.verbatim}
 
-2.  reload rules `sudo udevadm control --reload`
+2.  reload rules `sudo udevadm control --reload`{.verbatim}
 
 ### ufw-firewall
 
-1.  install `ufw`
+1.  install `ufw`{.verbatim}
 
 2.  retain default settings that deny incoming requests while allowing
     outgoing
 
-3.  run `sudo systemctl enable ufw.service` and
-    `sudo systemctl start ufw.service`
+3.  run `sudo systemctl enable ufw.service`{.verbatim} and
+    `sudo systemctl start ufw.service`{.verbatim}
 
-4.  run `sudo ufw enable` to enable it outside systemd
+4.  run `sudo ufw enable`{.verbatim} to enable it outside systemd
 
 ### openssh
 
-1.  install `openssh`
+1.  install `openssh`{.verbatim}
 
-2.  run `systemctl --user enable ssh-agent.service` and
-    `systemctl --user start ssh-agent.service` on local file
+2.  run `systemctl --user enable ssh-agent.service`{.verbatim} and
+    `systemctl --user start ssh-agent.service`{.verbatim} on local file
 
-3.  `SSH_AUTH_SOCK` environmental variable needs to be set in shellrc
+3.  `SSH_AUTH_SOCK`{.verbatim} environmental variable needs to be set in
+    shellrc
 
-4.  stow `~/.ssh/config` with instructions for adding keys to ssh agent
+4.  stow `~/.ssh/config`{.verbatim} with instructions for adding keys to
+    ssh agent
 
 ### gnupg
 
-1.  install `gnupg`
+1.  install `gnupg`{.verbatim}
 
-2.  stow `~/.gnupg/gpg-agent` to get relevant agent functionalities and
-    cached keys
+2.  stow `~/.gnupg/gpg-agent`{.verbatim} to get relevant agent
+    functionalities and cached keys
 
 ### acpi-audio-jack
 
-1.  install `acpid`
+1.  install `acpid`{.verbatim}
 
-2.  copy `audio_jack` to `/etc/acpi/events`
+2.  copy `audio_jack`{.verbatim} to `/etc/acpi/events`{.verbatim}
 
-3.  run `sudo sytemctl enable acpid.service` and
-    `sudo sytemctl start acpid.service`
+3.  run `sudo sytemctl enable acpid.service`{.verbatim} and
+    `sudo sytemctl start acpid.service`{.verbatim}
 
 ### i3-cycle
 
-1.  run `pip install --user i3-cycle`
+1.  run `pip install --user i3-cycle`{.verbatim}
 
-2.  move raw python script to `~/bin` because installed script gets
-    slowed down due to path regexes
+2.  move raw python script to `~/bin`{.verbatim} because installed
+    script gets slowed down due to path regexes
 
 ### pre-sleep-i3lock
 
-1.  all i3lock scripts have `sleep 0.1` to prevent i3 mode red color
-    from being captured in screenshot
+1.  all i3lock scripts have `sleep 0.1`{.verbatim} to prevent i3 mode
+    red color from being captured in screenshot
 
-2.  i3lock post-suspend requires `sleep 1` to prevent short real display
+2.  i3lock post-suspend requires `sleep 1`{.verbatim} to prevent short
+    real display
 
-3.  i3lock uses no forking `-n` for simple lock to ensure it does not
-    work in background; this allows dpms changes to persist until unlock
+3.  i3lock uses no forking `-n`{.verbatim} for simple lock to ensure it
+    does not work in background; this allows dpms changes to persist
+    until unlock
 
 4.  i3lock was tested with concurrent lock and suspend, and there is a
     PID check to ensure no double i3locks are created
 
-5.  copy `pre-sleep@.service` to `/etc/systemd/system`
+5.  copy `pre-sleep@.service`{.verbatim} to
+    `/etc/systemd/system`{.verbatim}
 
-6.  run `sudo systemctl enable pre-sleep@$USER.service`, remember to
-    replace `$USER` with the actual user
+6.  run `sudo systemctl enable pre-sleep@$USER.service`{.verbatim},
+    remember to replace `$USER`{.verbatim} with the actual user
 
 7.  suspension after i3lock is delayed if less than or equal to 10
     seconds are left before dpms down -\> not sure about this but it is
     possible
 
-8.  **buggy, needs more testing:** `xset -display :0 dpms force on` to
-    ensure screen lights up after suspend, in case it was locked and
-    dimmed earlier
+8.  **buggy, needs more testing:**
+    `xset -display :0 dpms force on`{.verbatim} to ensure screen lights
+    up after suspend, in case it was locked and dimmed earlier
 
 ### early-kms
 
-1.  add `MODULES=(intel_agp i915)` to `/etc/mkinitcpio.conf`
+1.  add `MODULES=(intel_agp i915)`{.verbatim} to
+    `/etc/mkinitcpio.conf`{.verbatim}
 
-2.  run `sudo mkinitcpio -P`
+2.  run `sudo mkinitcpio -P`{.verbatim}
 
 ### timesync
 
-1.  run `sudo systemctl enable systemd-timesyncd.service` in order to
-    sync time
+1.  run `sudo systemctl enable systemd-timesyncd.service`{.verbatim} in
+    order to sync time
 
 ### fonts
 
-1.  install `ttf-dejavu`, `ttf-font-awesome`, `otf-font-awesome` and AUR
-    `nerd-fonts-bitstream-vera-mono` for terminal font
+1.  install `ttf-dejavu`{.verbatim}, `ttf-font-awesome`{.verbatim},
+    `otf-font-awesome`{.verbatim} and AUR
+    `nerd-fonts-bitstream-vera-mono`{.verbatim} for terminal font
 
-2.  update cache using `fc-cache -fv`
+2.  update cache using `fc-cache -fv`{.verbatim}
 
 3.  i3 uses fc-match to find best font which mostly ends up defaulting
-    to `DejaVu Sans`, which is why it appears as a default
+    to `DejaVu Sans`{.verbatim}, which is why it appears as a default
 
 ### zsh
 
-1.  install `zsh` and use as main shell with `chsh -s /usr/bin/zsh`
+1.  install `zsh`{.verbatim} and use as main shell with
+    `chsh -s /usr/bin/zsh`{.verbatim}
 
 ### avahi and cups
 
 1.  systemd-level services need to be initialized for this
-
-## Completed
-
-**DONE** replace udev rules with local script location for
-portability
-
-**CLOSED:** *\[2020-11-12 Thu 14:12\]*
