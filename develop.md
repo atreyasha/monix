@@ -1,7 +1,7 @@
 ## Table of Contents
 -   [Tasks](#tasks)
-    -   [Migration to NixOS by emulating current
-        build](#migration-to-nixos-by-emulating-current-build)
+    -   [Arch linux reproducibility
+        script](#arch-linux-reproducibility-script)
     -   [Backup](#backup)
 -   [Reproduction logs for Arch
     Linux](#reproduction-logs-for-arch-linux)
@@ -27,22 +27,30 @@
 
 ## Tasks
 
-### Migration to NixOS by emulating current build
+### Arch linux reproducibility script
 
-1.  **TODO** sort out clipboard pasting into guest system -\>
-    faster configs
+1.  **TODO** set up basic arch-linux VM which can be used to
+    test installation process
 
-2.  **TODO** figure out guest additions inside virtualbox
-    basic image
+2.  **TODO** develop script to reproduce arch linux -\>
+    emulate from LARBS: <https://github.com/LukeSmithxyz/LARBS>
 
-3.  add dbus instructions to `.xinitrc`: <https://nixos.wiki/wiki/I3>
+    1.  make script work such that re-installing can be done harmlessly
+        even on fully installed system
 
-4.  figure out how to keep only recent builds and not all
+    2.  make script easily maintainable with cronjobs which update
+        packages and perform other book-keeping tasks
+
+3.  use sudo symlinks where possible for system dotfiles
+
+4.  take into account details regarding virtualization setup
+
+5.  reboot after installation
 
 ### Backup
 
-1.  re-arrange system to keep personal data in single location, which
-    should be backed up regularly
+1.  **TODO** re-arrange system to keep personal data in
+    single location, which should be backed up regularly
 
 ## Reproduction logs for Arch Linux
 

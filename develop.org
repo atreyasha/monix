@@ -3,13 +3,17 @@
 #+OPTIONS: p:t
 
 ** Tasks
-*** Migration to NixOS by emulating current build
-***** TODO sort out clipboard pasting into guest system -> faster configs
-***** TODO figure out guest additions inside virtualbox basic image
-***** add dbus instructions to ~.xinitrc~: https://nixos.wiki/wiki/I3
-***** figure out how to keep only recent builds and not all
+*** Arch linux reproducibility script
+***** TODO set up basic arch-linux VM which can be used to test installation process
+***** TODO develop script to reproduce arch linux -> emulate from LARBS: https://github.com/LukeSmithxyz/LARBS
+****** make script work such that re-installing can be done harmlessly even on fully installed system
+****** make script easily maintainable with cronjobs which update packages and perform other book-keeping tasks
+***** use sudo symlinks where possible for system dotfiles
+***** take into account details regarding virtualization setup
+***** reboot after installation
+
 *** Backup
-***** re-arrange system to keep personal data in single location, which should be backed up regularly
+***** TODO re-arrange system to keep personal data in single location, which should be backed up regularly
     
 ** Reproduction logs for Arch Linux
 *** pacman hooks
