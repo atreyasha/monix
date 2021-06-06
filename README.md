@@ -2,6 +2,10 @@
 
 This repository documents workflows to reproduce a minimal Arch Linux build called `monix`. This process has been tested on both virtual machines and actual hardware.
 
+<p align="center">
+<img src="https://archlinux.org/static/logos/legacy/arch-legacy-noodle-box.eb6d7aaefe13.svg">
+</p>
+
 ## Installation from live medium
 
 For this first step, follow the instructions from the Arch Linux installation [guide](https://wiki.archlinux.org/title/Installation_guide).
@@ -12,7 +16,7 @@ For this first step, follow the instructions from the Arch Linux installation [g
 # pacstrap /mnt base base-devel linux-lts linux-firmware vim git networkmanager
 ```
 
-## Post reboot
+## Post initial-reboot
 
 1. Log in to the freshly installed Arch Linux system as `root`
 
