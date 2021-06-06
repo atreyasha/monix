@@ -2,38 +2,54 @@
 -   [Tasks](#tasks)
     -   [Arch linux reproducibility
         script](#arch-linux-reproducibility-script)
-    -   [Backup](#backup)
 -   [Reproduction logs for Arch
     Linux](#reproduction-logs-for-arch-linux)
-    -   [pacman hooks](#pacman-hooks)
-    -   [linux-lts](#linux-lts)
-    -   [sudo](#sudo)
+    -   [pacman](#pacman)
+    -   [network manager](#network-manager)
     -   [beep](#beep)
     -   [tlp-runner](#tlp-runner)
     -   [light](#light)
-    -   [mesa-video-driver](#mesa-video-driver)
     -   [udev-battery-rules](#udev-battery-rules)
     -   [ufw-firewall](#ufw-firewall)
-    -   [openssh](#openssh)
-    -   [gnupg](#gnupg)
     -   [acpi-audio-jack](#acpi-audio-jack)
     -   [i3-cycle](#i3-cycle)
     -   [pre-sleep-i3lock](#pre-sleep-i3lock)
-    -   [early-kms](#early-kms)
     -   [timesync](#timesync)
-    -   [fonts](#fonts)
     -   [zsh](#zsh)
     -   [avahi and cups](#avahi-and-cups)
+    -   [virtualization setup -\> read Arch Wiki to confirm if anything
+        must be
+        done](#virtualization-setup---read-arch-wiki-to-confirm-if-anything-must-be-done)
 
 ## Tasks
 
 ### Arch linux reproducibility script
 
-1.  **TODO** set up basic arch-linux VM which can be used to
-    test installation process
+1.  Specific tasks
 
-2.  **TODO** develop script to reproduce arch linux -\>
-    emulate from LARBS: <https://github.com/LukeSmithxyz/LARBS>
+    1.  **TODO** installation steps via `Makefile`
+
+        1.  enable network manager to ensure it works on reboot
+
+        2.  git clone and install yay manually with makepkg
+
+        3.  install all packages using yay -\> add option to ignore all
+            prompts
+
+        4.  downgrade picom afterwards to 7.5-3 with --ala-only option
+
+        5.  install all python files
+
+        6.  update all configuration files from system defaults
+
+        7.  go through modular steps and install configuration files +
+            enable systemd services
+
+        8.  get all private files from private repo as well
+
+    2.  reboot after installation
+
+2.  High-level concepts
 
     1.  make script work such that re-installing can be done harmlessly
         even on fully installed system
@@ -41,48 +57,44 @@
     2.  make script easily maintainable with cronjobs which update
         packages and perform other book-keeping tasks
 
-3.  use sudo symlinks where possible for system dotfiles
+    3.  keep package list updated in this repository, as well as other
+        workflows
 
-4.  take into account details regarding virtualization setup
+    4.  add test suites to build repo which tests for necessary
+        variables and runs
 
-5.  reboot after installation
+    5.  replace user-level python packages from installation when we
+        find AUR alternatives to them
 
-### Backup
+3.  Backup
 
-1.  **TODO** re-arrange system to keep personal data in
-    single location, which should be backed up regularly
+    1.  figure out how to restore `personal` data
+
+    2.  figure out how to restore private dotfiles like `neomutt`,
+        `ssh`, `gnupg` and `pass` files -\> to fully emulate current
+        distribution
+
+    3.  re-arrange system to keep personal data in single location,
+        which should be backed up regularly
 
 ## Reproduction logs for Arch Linux
 
-### pacman hooks
+### pacman
 
-1.  use `pacdiff -o` for checking differences in configuration files
+1.  need to export specific files for this, including `pacman.conf` and
+    `pacman.d/*`
 
-2.  use `paccache -rvk2` to only keep last two caches
+2.  use `pacdiff -o` for checking differences in configuration files
 
-### linux-lts
+3.  use `paccache -rvk2` to only keep last two caches
 
-1.  install `linux-lts`{.verbatim} and uninstall `linux`{.verbatim} to
-    overcome occasional dark display upon waking from sleep with DP
-    monitor
+4.  possibly other hooks for systemm updates -\> this can happen later
+    on
 
-2.  error message:
-    `kernel: i915 0000:00:02.0: [drm] *ERROR* failed to enable link training`{.verbatim}
+### network manager
 
-3.  this bug has not occurred with linux-lts, some discussion shows this
-    could be a resolution: see
-    <https://bbs.archlinux.org/viewtopic.php?id=196370> and
-    <https://www.reddit.com/r/archlinux/comments/4oa926/new_install_intel_dp_start_link_train_i915_failed/>
-
-### sudo
-
-1.  install `sudo`{.verbatim}
-
-2.  add or uncomment the following
-    `%wheel      ALL=(ALL) ALL`{.verbatim} to allow for wheel users to
-    access sudo
-
-3.  use `visudo`{.verbatim} to prevent any syntax errors
+1.  run `sudo systemctl enable NetworkManager.service`{.verbatim} and
+    `sudo systemctl start NetworkManager.service`{.verbatim}
 
 ### beep
 
@@ -91,25 +103,16 @@
 
 ### tlp-runner
 
-1.  instal `tlp`{.verbatim}
-
-2.  copy existing `tlp.conf`{.verbatim} to `/etc/tlp.conf`{.verbatim}
+1.  copy existing `tlp.conf`{.verbatim} to `/etc/tlp.conf`{.verbatim}
     for disabling bluetooth, wifi and wwan at startup
 
-3.  run `sudo systemctl enable tlp.service`{.verbatim} and
+2.  run `sudo systemctl enable tlp.service`{.verbatim} and
     `sudo systemctl start tlp.service`{.verbatim}
 
 ### light
 
-1.  install `light`{.verbatim} for managing backlight
-
-2.  add local user to `video`{.verbatim} group by running
+1.  add local user to `video`{.verbatim} group by running
     `usermod -a -G video shankar`{.verbatim}
-
-### mesa-video-driver
-
-1.  install `mesa`{.verbatim} package and avoid
-    `xf86-video-intel`{.verbatim}
 
 ### udev-battery-rules
 
@@ -120,7 +123,7 @@
 
 ### ufw-firewall
 
-1.  install `ufw`{.verbatim}
+1.  copy config file
 
 2.  retain default settings that deny incoming requests while allowing
     outgoing
@@ -130,99 +133,36 @@
 
 4.  run `sudo ufw enable`{.verbatim} to enable it outside systemd
 
-### openssh
-
-1.  install `openssh`{.verbatim}
-
-2.  run `systemctl --user enable ssh-agent.service`{.verbatim} and
-    `systemctl --user start ssh-agent.service`{.verbatim} on local file
-
-3.  `SSH_AUTH_SOCK`{.verbatim} environmental variable needs to be set in
-    shellrc
-
-4.  stow `~/.ssh/config`{.verbatim} with instructions for adding keys to
-    ssh agent
-
-### gnupg
-
-1.  install `gnupg`{.verbatim}
-
-2.  stow `~/.gnupg/gpg-agent`{.verbatim} to get relevant agent
-    functionalities and cached keys
-
 ### acpi-audio-jack
 
-1.  install `acpid`{.verbatim}
+1.  copy `audio_jack`{.verbatim} to `/etc/acpi/events`{.verbatim}
 
-2.  copy `audio_jack`{.verbatim} to `/etc/acpi/events`{.verbatim}
-
-3.  run `sudo sytemctl enable acpid.service`{.verbatim} and
+2.  run `sudo sytemctl enable acpid.service`{.verbatim} and
     `sudo sytemctl start acpid.service`{.verbatim}
 
 ### i3-cycle
 
 1.  run `pip install --user i3-cycle`{.verbatim}
 
-2.  move raw python script to `~/bin`{.verbatim} because installed
-    script gets slowed down due to path regexes
-
 ### pre-sleep-i3lock
 
-1.  all i3lock scripts have `sleep 0.1`{.verbatim} to prevent i3 mode
-    red color from being captured in screenshot
-
-2.  i3lock post-suspend requires `sleep 1`{.verbatim} to prevent short
-    real display
-
-3.  i3lock uses no forking `-n`{.verbatim} for simple lock to ensure it
-    does not work in background; this allows dpms changes to persist
-    until unlock
-
-4.  i3lock was tested with concurrent lock and suspend, and there is a
-    PID check to ensure no double i3locks are created
-
-5.  copy `pre-sleep@.service`{.verbatim} to
+1.  copy `pre-sleep@.service`{.verbatim} to
     `/etc/systemd/system`{.verbatim}
 
-6.  run `sudo systemctl enable pre-sleep@$USER.service`{.verbatim},
+2.  run `sudo systemctl enable pre-sleep@$USER.service`{.verbatim},
     remember to replace `$USER`{.verbatim} with the actual user
-
-7.  suspension after i3lock is delayed if less than or equal to 10
-    seconds are left before dpms down -\> not sure about this but it is
-    possible
-
-8.  **buggy, needs more testing:**
-    `xset -display :0 dpms force on`{.verbatim} to ensure screen lights
-    up after suspend, in case it was locked and dimmed earlier
-
-### early-kms
-
-1.  add `MODULES=(intel_agp i915)`{.verbatim} to
-    `/etc/mkinitcpio.conf`{.verbatim}
-
-2.  run `sudo mkinitcpio -P`{.verbatim}
 
 ### timesync
 
 1.  run `sudo systemctl enable systemd-timesyncd.service`{.verbatim} in
     order to sync time
 
-### fonts
-
-1.  install `ttf-dejavu`{.verbatim}, `ttf-font-awesome`{.verbatim},
-    `otf-font-awesome`{.verbatim} and AUR
-    `nerd-fonts-bitstream-vera-mono`{.verbatim} for terminal font
-
-2.  update cache using `fc-cache -fv`{.verbatim}
-
-3.  i3 uses fc-match to find best font which mostly ends up defaulting
-    to `DejaVu Sans`{.verbatim}, which is why it appears as a default
-
 ### zsh
 
-1.  install `zsh`{.verbatim} and use as main shell with
-    `chsh -s /usr/bin/zsh`{.verbatim}
+1.  use as main shell with `chsh -s /usr/bin/zsh`{.verbatim}
 
 ### avahi and cups
 
 1.  systemd-level services need to be initialized for this
+
+### virtualization setup -\> read Arch Wiki to confirm if anything must be done
