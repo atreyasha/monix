@@ -5,21 +5,10 @@
 -   [Reproduction logs for Arch
     Linux](#reproduction-logs-for-arch-linux)
     -   [pacman](#pacman)
-    -   [network manager](#network-manager)
-    -   [beep](#beep)
-    -   [tlp-runner](#tlp-runner)
-    -   [light](#light)
-    -   [udev-battery-rules](#udev-battery-rules)
-    -   [ufw-firewall](#ufw-firewall)
-    -   [acpi-audio-jack](#acpi-audio-jack)
-    -   [i3-cycle](#i3-cycle)
-    -   [pre-sleep-i3lock](#pre-sleep-i3lock)
-    -   [timesync](#timesync)
-    -   [zsh](#zsh)
-    -   [avahi and cups](#avahi-and-cups)
     -   [virtualization setup -\> read Arch Wiki to confirm if anything
         must be
         done](#virtualization-setup---read-arch-wiki-to-confirm-if-anything-must-be-done)
+    -   [ufw-firewall](#ufw-firewall)
 
 ## Tasks
 
@@ -27,44 +16,59 @@
 
 1.  Specific tasks
 
-    1.  **TODO** installation steps via `Makefile`
+    1.  **TODO** update all configuration files from system
+        defaults -\> think about which ones are truly needed
 
-        1.  enable network manager to ensure it works on reboot
+    2.  **TODO** install configuration files + enable systemd
+        services + other commands below
 
-        2.  git clone and install yay manually with makepkg
+    3.  **DONE** install all python dependencies
 
-        3.  install all packages using yay -\> add option to ignore all
-            prompts
+        **CLOSED:** *\[2021-06-08 Tue 16:49\]*
 
-        4.  downgrade picom afterwards to 7.5-3 with --ala-only option
+    4.  **DONE** downgrade picom afterwards to 7.5-3 with
+        --ala-only, --noconfim and yes
 
-        5.  install all python files
+        **CLOSED:** *\[2021-06-08 Tue 16:48\]*
 
-        6.  update all configuration files from system defaults
+    5.  **DONE** install all packages using yay -\> add
+        option to ignore all prompts, ignore confirmations
 
-        7.  go through modular steps and install configuration files +
-            enable systemd services
+        **CLOSED:** *\[2021-06-08 Tue 16:45\]*
 
-        8.  get all private files from private repo as well
+    6.  **DONE** git clone and install yay manually with
+        makepkg
 
-    2.  reboot after installation
+        **CLOSED:** *\[2021-06-08 Tue 16:26\]*
 
-2.  High-level concepts
+    7.  **DONE** enable network manager to ensure it works on
+        reboot
+
+        **CLOSED:** *\[2021-06-08 Tue 16:22\]*
+
+    8.  add test suites to build repo which tests for necessary
+        variables and runs
+
+    9.  get all private files from private repo as well
+
+    10. reboot after installation
+
+2.  Next tasks
 
     1.  make script work such that re-installing can be done harmlessly
         even on fully installed system
 
-    2.  make script easily maintainable with cronjobs which update
-        packages and perform other book-keeping tasks
+    2.  add hook to automatically track downgraded packages as well and
+        add conditional when installing them to check if the array is
+        not empty
 
-    3.  keep package list updated in this repository, as well as other
-        workflows
+    3.  possibly add pacman hook to update package lists + `pip` in
+        `monix`:
+        <https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#List_of_installed_packages>
 
-    4.  add test suites to build repo which tests for necessary
-        variables and runs
-
-    5.  replace user-level python packages from installation when we
-        find AUR alternatives to them
+    4.  add a test hook after every system update to ensure tracked
+        files are the same -\> think of how to update configuration
+        files in both directions seamlessly
 
 3.  Backup
 
@@ -88,38 +92,7 @@
 
 3.  use `paccache -rvk2` to only keep last two caches
 
-4.  possibly other hooks for systemm updates -\> this can happen later
-    on
-
-### network manager
-
-1.  run `sudo systemctl enable NetworkManager.service`{.verbatim} and
-    `sudo systemctl start NetworkManager.service`{.verbatim}
-
-### beep
-
-1.  disable analog beep
-    `sudo echo "blacklist pcspkr" | tee /etc/modprobe.d/nobeep.conf`{.verbatim}
-
-### tlp-runner
-
-1.  copy existing `tlp.conf`{.verbatim} to `/etc/tlp.conf`{.verbatim}
-    for disabling bluetooth, wifi and wwan at startup
-
-2.  run `sudo systemctl enable tlp.service`{.verbatim} and
-    `sudo systemctl start tlp.service`{.verbatim}
-
-### light
-
-1.  add local user to `video`{.verbatim} group by running
-    `usermod -a -G video shankar`{.verbatim}
-
-### udev-battery-rules
-
-1.  copy `60-onbattery.rules`{.verbatim} and
-    `61-onpower.rules`{.verbatim} to `/etc/udev/rules.d`{.verbatim}
-
-2.  reload rules `sudo udevadm control --reload`{.verbatim}
+### virtualization setup -\> read Arch Wiki to confirm if anything must be done
 
 ### ufw-firewall
 
@@ -128,41 +101,7 @@
 2.  retain default settings that deny incoming requests while allowing
     outgoing
 
-3.  run `sudo systemctl enable ufw.service`{.verbatim} and
-    `sudo systemctl start ufw.service`{.verbatim}
+3.  run `sudo systemctl enable ufw.service`{.verbatim}, might need to be
+    started as well
 
 4.  run `sudo ufw enable`{.verbatim} to enable it outside systemd
-
-### acpi-audio-jack
-
-1.  copy `audio_jack`{.verbatim} to `/etc/acpi/events`{.verbatim}
-
-2.  run `sudo sytemctl enable acpid.service`{.verbatim} and
-    `sudo sytemctl start acpid.service`{.verbatim}
-
-### i3-cycle
-
-1.  run `pip install --user i3-cycle`{.verbatim}
-
-### pre-sleep-i3lock
-
-1.  copy `pre-sleep@.service`{.verbatim} to
-    `/etc/systemd/system`{.verbatim}
-
-2.  run `sudo systemctl enable pre-sleep@$USER.service`{.verbatim},
-    remember to replace `$USER`{.verbatim} with the actual user
-
-### timesync
-
-1.  run `sudo systemctl enable systemd-timesyncd.service`{.verbatim} in
-    order to sync time
-
-### zsh
-
-1.  use as main shell with `chsh -s /usr/bin/zsh`{.verbatim}
-
-### avahi and cups
-
-1.  systemd-level services need to be initialized for this
-
-### virtualization setup -\> read Arch Wiki to confirm if anything must be done

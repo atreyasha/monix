@@ -5,23 +5,28 @@
 ** Tasks
 *** Arch linux reproducibility script
 ***** Specific tasks
-****** TODO installation steps via ~Makefile~
-******* enable network manager to ensure it works on reboot
-******* git clone and install yay manually with makepkg
-******* install all packages using yay -> add option to ignore all prompts
-******* downgrade picom afterwards to 7.5-3 with --ala-only option
-******* install all python files
-******* update all configuration files from system defaults
-******* go through modular steps and install configuration files + enable systemd services
-******* get all private files from private repo as well
+****** TODO update all configuration files from system defaults -> think about which ones are truly needed
+****** TODO install configuration files + enable systemd services + other commands below
+****** DONE install all python dependencies
+       CLOSED: [2021-06-08 Tue 16:49]
+****** DONE downgrade picom afterwards to 7.5-3 with --ala-only, --noconfim and yes
+       CLOSED: [2021-06-08 Tue 16:48]
+****** DONE install all packages using yay -> add option to ignore all prompts, ignore confirmations
+       CLOSED: [2021-06-08 Tue 16:45]
+****** DONE git clone and install yay manually with makepkg
+       CLOSED: [2021-06-08 Tue 16:26]
+****** DONE enable network manager to ensure it works on reboot
+       CLOSED: [2021-06-08 Tue 16:22]
+
+****** add test suites to build repo which tests for necessary variables and runs
+****** get all private files from private repo as well
 ****** reboot after installation
 
-***** High-level concepts
+***** Next tasks
 ****** make script work such that re-installing can be done harmlessly even on fully installed system
-****** make script easily maintainable with cronjobs which update packages and perform other book-keeping tasks
-****** keep package list updated in this repository, as well as other workflows
-****** add test suites to build repo which tests for necessary variables and runs
-****** replace user-level python packages from installation when we find AUR alternatives to them
+****** add hook to automatically track downgraded packages as well and add conditional when installing them to check if the array is not empty
+****** possibly add pacman hook to update package lists + ~pip~ in ~monix~: https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#List_of_installed_packages
+****** add a test hook after every system update to ensure tracked files are the same -> think of how to update configuration files in both directions seamlessly
 
 ***** Backup
 ****** figure out how to restore ~personal~ data
@@ -33,36 +38,9 @@
 ***** need to export specific files for this, including ~pacman.conf~ and ~pacman.d/*~ 
 ***** use ~pacdiff -o~ for checking differences in configuration files 
 ***** use ~paccache -rvk2~ to only keep last two caches
-***** possibly other hooks for systemm updates -> this can happen later on
-*** network manager
-***** run =sudo systemctl enable NetworkManager.service= and =sudo systemctl start NetworkManager.service=  
-*** beep
-***** disable analog beep =sudo echo "blacklist pcspkr" | tee /etc/modprobe.d/nobeep.conf=      
-*** tlp-runner
-***** copy existing =tlp.conf= to =/etc/tlp.conf= for disabling bluetooth, wifi and wwan at startup
-***** run =sudo systemctl enable tlp.service= and =sudo systemctl start tlp.service=  
-*** light
-***** add local user to =video= group by running =usermod -a -G video shankar= 
-*** udev-battery-rules
-***** copy =60-onbattery.rules= and =61-onpower.rules= to =/etc/udev/rules.d=
-***** reload rules =sudo udevadm control --reload=
+*** virtualization setup -> read Arch Wiki to confirm if anything must be done
 *** ufw-firewall
 ***** copy config file
 ***** retain default settings that deny incoming requests while allowing outgoing
-***** run =sudo systemctl enable ufw.service= and =sudo systemctl start ufw.service=
+***** run =sudo systemctl enable ufw.service=, might need to be started as well
 ***** run =sudo ufw enable= to enable it outside systemd
-*** acpi-audio-jack
-***** copy =audio_jack= to =/etc/acpi/events=
-***** run =sudo sytemctl enable acpid.service= and =sudo sytemctl start acpid.service=
-*** i3-cycle
-***** run =pip install --user i3-cycle=
-*** pre-sleep-i3lock
-***** copy =pre-sleep@.service= to =/etc/systemd/system=
-***** run =sudo systemctl enable pre-sleep@$USER.service=, remember to replace =$USER= with the actual user
-*** timesync
-***** run =sudo systemctl enable systemd-timesyncd.service= in order to sync time
-*** zsh
-***** use as main shell with =chsh -s /usr/bin/zsh=
-*** avahi and cups
-***** systemd-level services need to be initialized for this
-*** virtualization setup -> read Arch Wiki to confirm if anything must be done
