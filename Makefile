@@ -6,7 +6,7 @@ UDEV    ?= /etc/udev/rules.d
 yay:
 	tmp="$$(mktemp -d)"
 	git clone "https://aur.archlinux.org/yay.git" "$$tmp"
-  cd "$$tmp/yay"
+	cd "$$tmp/yay"
 	makepkg -si --noconfirm
 
 .PHONY: pacman_native_pkgs
