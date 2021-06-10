@@ -46,7 +46,7 @@ ufw:
 .PHONY: zsh
 TARGETS += zsh
 zsh:
-	sudo chsh -s /usr/bin/zsh
+	chsh -s /usr/bin/zsh
 
 .PHONY: networkmanager
 TARGETS += networkmanager
