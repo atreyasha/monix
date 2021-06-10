@@ -1,6 +1,7 @@
 ACPI    ?= /etc/acpi/events
 SYSTEMD ?= /etc/systemd/system
 UDEV    ?= /etc/udev/rules.d
+CONF    ?= ./conf
 
 .PHONY: yay
 yay:
@@ -47,21 +48,21 @@ light:
 
 .PHONY: tlp
 tlp:
-	install -m644 config/tlp.conf /etc/tlp.conf
+	install -m644 $(CONF)/tlp.conf /etc/tlp.conf
 	systemctl enable tlp.service
 
 .PHONY: udev
 udev:
-	install -Dm644 config/60-onbattery.rules $(UDEV)/60-onbattery.rules
-	install -Dm644 config/61-onpower.rules $(UDEV)/61-onpower.rules
+	install -Dm644 $(CONF)/60-onbattery.rules $(UDEV)/60-onbattery.rules
+	install -Dm644 $(CONF)/61-onpower.rules $(UDEV)/61-onpower.rules
 	udevadm control --reload
 
 .PHONY: acpi
 acpi:
-	install -Dm644 config/audio_jack $(ACPI)/audio_jack
+	install -Dm644 $(CONF)/audio_jack $(ACPI)/audio_jack
 	sudo sytemctl enable acpid.service
 
 .PHONY: systemd_pre_sleep
 systemd_pre_sleep:
-	install -Dm644 config/pre-sleep@.service $(SYSTEMD)/pre-sleep@.service
+	install -Dm644 $(CONF)/pre-sleep@.service $(SYSTEMD)/pre-sleep@.service
 	systemctl enable "pre-sleep@$$USER.service"
