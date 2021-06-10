@@ -16,12 +16,13 @@ yay:
 .PHONY: pacman_native_pkgs
 TARGETS += pacman_native_pkgs
 pacman_native_pkgs:
-	yes | sudo pacman -S --needed - < pkg/pacman_native
+	sudo pacman -Syy
+	sudo pacman -S --needed - < pkg/pacman_native
 
 .PHONY: pacman_foreign_pkgs
 TARGETS += pacman_foreign_pkgs
 pacman_foreign_pkgs:
-	yes | yay -S --needed - < pkg/pacman_foreign
+	yay -S --needed - < pkg/pacman_foreign
 
 .PHONY: downgrade_pkgs
 TARGETS += downgrade_pkgs
