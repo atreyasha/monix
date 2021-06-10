@@ -56,12 +56,12 @@ For this first step, follow the instructions from the Arch Linux installation [g
     $ make install
     ```
 
-9. Clone the `dotfiles` repository and install:
+9. Clone the [`dotfiles`](https://github.com/atreyasha/dotfiles) repository and install:
 
     ```
     $ git clone https://github.com/atreyasha/dotfiles.git
     $ cd dotfiles
-    $ stow -v -R -t ~ $(ls -d */)
+    $ make install.monix
     ```
 
 10. If you have any private dotfiles and data, deploy them now
