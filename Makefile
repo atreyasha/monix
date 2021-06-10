@@ -85,7 +85,7 @@ udev:
 TARGETS += acpi
 acpi:
 	sudo install -Dm644 $(CONF)/audio_jack $(ACPI)/audio_jack
-	sudo sytemctl enable acpid.service
+	sudo systemctl enable acpid.service
 
 .PHONY: systemd_pre_sleep
 TARGETS += systemd_pre_sleep
