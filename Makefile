@@ -11,22 +11,22 @@ yay:
 	tmp="$$(mktemp -d)"; \
 	git clone "https://aur.archlinux.org/yay.git" "$$tmp"; \
 	cd "$$tmp"; \
-	makepkg -si --noconfirm
+	makepkg -si
 
 .PHONY: pacman_native_pkgs
 TARGETS += pacman_native_pkgs
 pacman_native_pkgs:
-	yes | sudo pacman -S --needed --noconfirm - < pkg/pacman_native
+	yes | sudo pacman -S --needed - < pkg/pacman_native
 
 .PHONY: pacman_foreign_pkgs
 TARGETS += pacman_foreign_pkgs
 pacman_foreign_pkgs:
-	yes | yay -S --needed --noconfirm - < pkg/pacman_foreign
+	yes | yay -S --needed - < pkg/pacman_foreign
 
 .PHONY: downgrade_pkgs
 TARGETS += downgrade_pkgs
 downgrade_pkgs:
-	yes | sudo downgrade --ala-only picom=7.5-3 -- --noconfirm
+	yes | sudo downgrade --ala-only picom=7.5-3
 
 .PHONY: pip_pkgs
 TARGETS += pip_pkgs
