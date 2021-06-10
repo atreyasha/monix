@@ -1,3 +1,4 @@
+PACMAN  ?= /etc/pacman.d
 ACPI    ?= /etc/acpi/events
 SYSTEMD ?= /etc/systemd/system
 UDEV    ?= /etc/udev/rules.d
@@ -25,6 +26,14 @@ downgrade_pkgs:
 .PHONY: pip_pkgs
 pip_pkgs:
 	pip install --user -r pkg/requirements.txt
+
+.PHONY: ufw
+ufw:
+	systemctl enable ufw.service
+	systemctl start ufw.service
+	ufw default deny incoming
+	ufw default allow outgoing
+	ufw enable
 
 .PHONY: zsh
 zsh:
@@ -66,3 +75,8 @@ acpi:
 systemd_pre_sleep:
 	install -Dm644 $(CONF)/pre-sleep@.service $(SYSTEMD)/pre-sleep@.service
 	systemctl enable "pre-sleep@$$USER.service"
+
+.PHONY: pacman_hooks
+pacman_hooks:
+	install -Dm644 $(CONF)/pacdiff.hook $(PACMAN)/hooks/pacdiff.hook
+	install -Dm644 $(CONF)/paccache.hook $(PACMAN)/hooks/paccache.hook
