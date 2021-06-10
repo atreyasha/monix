@@ -5,26 +5,13 @@
 ** Tasks
 *** Arch linux reproducibility script
 ***** Specific tasks
-****** TODO update all configuration files from system defaults -> think about which ones are truly needed
-****** TODO install configuration files + enable systemd services + other commands below
-****** DONE install all python dependencies
-       CLOSED: [2021-06-08 Tue 16:49]
-****** DONE downgrade picom afterwards to 7.5-3 with --ala-only, --noconfim and yes
-       CLOSED: [2021-06-08 Tue 16:48]
-****** DONE install all packages using yay -> add option to ignore all prompts, ignore confirmations
-       CLOSED: [2021-06-08 Tue 16:45]
-****** DONE git clone and install yay manually with makepkg
-       CLOSED: [2021-06-08 Tue 16:26]
-****** DONE enable network manager to ensure it works on reboot
-       CLOSED: [2021-06-08 Tue 16:22]
-
-****** add test suites to build repo which tests for necessary variables and runs
-****** get all private files from private repo as well
-****** reboot after installation
+****** TODO add test suites to build repo which tests for necessary variables and runs
+****** TODO deploy all private files from private repo, or think of secure way to handle this
+****** find a way to manually create ~downloads~ from qutebrowser, or do it while creating filesystem structure
 
 ***** Next tasks
 ****** make script work such that re-installing can be done harmlessly even on fully installed system
-****** add hook to automatically track downgraded packages as well and add conditional when installing them to check if the array is not empty
+****** add hook to automatically track downgraded packages as well and add conditional when installing them to check if the array is not empty -> coordinate with ~downgrade~
 ****** possibly add pacman hook to update package lists + ~pip~ in ~monix~: https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#List_of_installed_packages
 ****** add a test hook after every system update to ensure tracked files are the same -> think of how to update configuration files in both directions seamlessly
 
@@ -32,15 +19,3 @@
 ****** figure out how to restore ~personal~ data
 ****** figure out how to restore private dotfiles like ~neomutt~, ~ssh~, ~gnupg~ and ~pass~ files -> to fully emulate current distribution
 ****** re-arrange system to keep personal data in single location, which should be backed up regularly
-       
-** Reproduction logs for Arch Linux
-*** pacman
-***** need to export specific files for this, including ~pacman.conf~ and ~pacman.d/*~ 
-***** use ~pacdiff -o~ for checking differences in configuration files 
-***** use ~paccache -rvk2~ to only keep last two caches
-*** virtualization setup -> read Arch Wiki to confirm if anything must be done
-*** ufw-firewall
-***** copy config file
-***** retain default settings that deny incoming requests while allowing outgoing
-***** run =sudo systemctl enable ufw.service=, might need to be started as well
-***** run =sudo ufw enable= to enable it outside systemd
