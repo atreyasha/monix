@@ -61,7 +61,7 @@ For this first step, follow the instructions from the Arch Linux installation [g
     ```
     $ git clone https://github.com/atreyasha/dotfiles.git
     $ cd dotfiles
-    $ make install.local
+    $ stow -v -R -t ~ $(ls -d */)
     ```
 
 10. If you have any private dotfiles and data, deploy them now
