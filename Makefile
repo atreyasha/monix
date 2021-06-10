@@ -10,7 +10,7 @@ TARGETS += yay
 yay:
 	tmp="$$(mktemp -d)"; \
 	git clone "https://aur.archlinux.org/yay.git" "$$tmp"; \
-	cd "$$tmp/yay"; \
+	cd "$$tmp"; \
 	makepkg -si --noconfirm
 
 .PHONY: pacman_native_pkgs
