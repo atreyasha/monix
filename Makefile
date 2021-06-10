@@ -61,7 +61,7 @@ timesync:
 .PHONY: disable_beep
 TARGETS += disable_beep
 disable_beep:
-	sudo echo "blacklist pcspkr" > "/etc/modprobe.d/nobeep.conf"
+	echo "blacklist pcspkr" | sudo tee "/etc/modprobe.d/nobeep.conf"
 
 .PHONY: light
 TARGETS += light
