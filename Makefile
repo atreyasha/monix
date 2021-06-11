@@ -41,7 +41,7 @@ ufw:
 	sudo systemctl start ufw.service
 	sudo ufw default deny incoming
 	sudo ufw default allow outgoing
-	sudo ufw enable || printf "Skipping"
+	sudo ufw enable || printf "Skipping\n"
 
 .PHONY: zsh
 TARGETS += zsh
