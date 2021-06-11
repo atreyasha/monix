@@ -7,25 +7,25 @@
 
 ### Arch linux reproducibility script
 
-1.  Specific tasks
+1.  Specific extra minimal tasks
 
-    1.  **TODO** add test suites to build repo which tests
-        for necessary variables and runs
-
-    2.  **TODO** deploy all private files from private repo,
-        or think of secure way to handle this
-
-    3.  find a way to manually create `downloads` from qutebrowser, or
+    1.  find a way to manually create `downloads` from qutebrowser, or
         do it while creating filesystem structure
+
+    2.  deploy all private files from private repo, or think of secure
+        way to handle this -\> adjust `dotfiles` as well since GPG key
+        is needed to commit
+
+    3.  make script work such that re-installing can be done harmlessly
+        even on fully installed system
 
 2.  Next tasks
 
-    1.  make script work such that re-installing can be done harmlessly
-        even on fully installed system
-
-    2.  add hook to automatically track downgraded packages as well and
+    1.  add hook to automatically track downgraded packages as well and
         add conditional when installing them to check if the array is
         not empty -\> coordinate with `downgrade`
+
+    2.  add a new test suite to check for downgraded packages
 
     3.  possibly add pacman hook to update package lists + `pip` in
         `monix`:
@@ -34,6 +34,10 @@
     4.  add a test hook after every system update to ensure tracked
         files are the same -\> think of how to update configuration
         files in both directions seamlessly
+
+    5.  add a hook to convert all optional (non-true) orphans to
+        explicit packages -\> or at least to check them after each
+        upgrade
 
 3.  Backup
 
