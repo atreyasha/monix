@@ -102,3 +102,7 @@ pacman_hooks:
 
 .PHONY: install
 install: $(TARGETS)
+
+.PHONY: test
+test:
+	bats test/monix.bats
