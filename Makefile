@@ -72,33 +72,33 @@ light:
 .PHONY: tlp
 TARGETS += tlp
 tlp:
-	sudo install -m644 $(CONF)/tlp.conf /etc/tlp.conf
+	sudo install -Dm644 $(CONF)/tlp.conf -t /etc
 	sudo systemctl enable tlp.service
 
 .PHONY: udev
 TARGETS += udev
 udev:
-	sudo install -Dm644 $(CONF)/60-onbattery.rules $(UDEV)/60-onbattery.rules
-	sudo install -Dm644 $(CONF)/61-onpower.rules $(UDEV)/61-onpower.rules
+	sudo install -Dm644 $(CONF)/60-onbattery.rules -t $(UDEV)
+	sudo install -Dm644 $(CONF)/61-onpower.rules -t $(UDEV)
 	sudo udevadm control --reload
 
 .PHONY: acpi
 TARGETS += acpi
 acpi:
-	sudo install -Dm644 $(CONF)/audio_jack $(ACPI)/audio_jack
+	sudo install -Dm644 $(CONF)/audio_jack -t $(ACPI)
 	sudo systemctl enable acpid.service
 
 .PHONY: systemd_pre_sleep
 TARGETS += systemd_pre_sleep
 systemd_pre_sleep:
-	sudo install -Dm644 $(CONF)/pre-sleep@.service $(SYSTEMD)/pre-sleep@.service
+	sudo install -Dm644 $(CONF)/pre-sleep@.service -t $(SYSTEMD)
 	sudo systemctl enable "pre-sleep@$$USER.service"
 
 .PHONY: pacman_hooks
 TARGETS += pacman_hooks
 pacman_hooks:
-	sudo install -Dm644 $(CONF)/pacdiff.hook $(PACMAN)/hooks/pacdiff.hook
-	sudo install -Dm644 $(CONF)/paccache.hook $(PACMAN)/hooks/paccache.hook
+	sudo install -Dm644 $(CONF)/pacdiff.hook -t $(PACMAN)/hooks
+	sudo install -Dm644 $(CONF)/paccache.hook -t $(PACMAN)/hooks
 
 .PHONY: install
 install: $(TARGETS)
