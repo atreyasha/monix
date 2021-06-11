@@ -9,10 +9,9 @@ TARGETS =
 TARGETS += yay
 yay:
 	tmp="$$(mktemp -d)"; \
-	git clone "https://aur.archlinux.org/yay.git" "$$tmp"; \
+	git clone "https://aur.archlinux.org/yay-bin.git" "$$tmp"; \
 	cd "$$tmp"; \
-	makepkg -si; \
-	pacman --clean
+	makepkg -si
 
 .PHONY: pacman_native_pkgs
 TARGETS += pacman_native_pkgs
