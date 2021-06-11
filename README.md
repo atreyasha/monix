@@ -70,7 +70,7 @@ For this first step, follow the instructions from the Arch Linux installation [g
 
 ## Test
 
-Run test script to check everything works:
+[`bats-core`](https://github.com/bats-core/bats-core) is a dependency for unit testing. To run tests, execute:
 
 ```
 $ make test
