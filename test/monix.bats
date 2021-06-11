@@ -10,13 +10,13 @@ grep "hypervisor" /proc/cpuinfo &>/dev/null && VM="1" || VM="0"
 }
 
 @test "checking native pacman packages" {
-  installed="$(pacman -Qqen | xargs)"
+  installed="$(pacman -Qqn | xargs)"
   compare="$(cat pkg/pacman_native | xargs)"
   [ "$installed" = "$compare" ]
 }
 
 @test "checking AUR packages" {
-  installed="$(pacman -Qqem | xargs)"
+  installed="$(pacman -Qqm | xargs)"
   compare="$(cat pkg/pacman_foreign | xargs)"
   [ "$installed" = "$compare" ]
 }
