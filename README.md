@@ -75,3 +75,7 @@ For this first step, follow the instructions from the Arch Linux installation [g
 ```
 $ make test
 ```
+
+## Development
+
+Check out our development [log](./docs/develop.md) for details on upcoming developments.
