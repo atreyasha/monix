@@ -11,7 +11,8 @@ yay:
 	tmp="$$(mktemp -d)"; \
 	git clone "https://aur.archlinux.org/yay.git" "$$tmp"; \
 	cd "$$tmp"; \
-	makepkg -si
+	makepkg -si; \
+	pacman --clean
 
 .PHONY: pacman_native_pkgs
 TARGETS += pacman_native_pkgs
