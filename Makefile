@@ -2,6 +2,7 @@ PACMAN  ?= /etc/pacman.d
 ACPI    ?= /etc/acpi/events
 SYSTEMD ?= /etc/systemd/system
 UDEV    ?= /etc/udev/rules.d
+UFW     ?= /etc/ufw
 CONF    ?= ./conf
 TARGETS =
 
@@ -41,7 +42,7 @@ ufw:
 	sudo systemctl start ufw.service
 	sudo ufw default deny incoming
 	sudo ufw default allow outgoing
-	sudo ufw enable || printf "Skipping due to error, execute again after reboot\n"
+	sudo install -Dm644 $(CONF)/ufw.conf -t $(UFW) 
 
 .PHONY: zsh
 TARGETS += zsh
