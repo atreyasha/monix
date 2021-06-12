@@ -58,7 +58,7 @@ networkmanager:
 TARGETS += timesync
 timesync:
 	sudo systemctl enable systemd-timesyncd.service
-	sudo timedatectl set-ntp on
+	sudo timedatectl set-ntp true
 
 .PHONY: disable_beep
 TARGETS += disable_beep
