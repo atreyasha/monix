@@ -14,7 +14,7 @@
 ****** add a new test suite to check for downgraded packages
 ****** possibly add pacman hook to update package lists + ~pip~ in ~monix~: https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#List_of_installed_packages
 ****** add a test hook after every system update to ensure tracked files are the same -> think of how to update configuration files in both directions seamlessly
-****** add a hook to convert all optional (non-true) orphans to explicit packages -> or at least to check them after each upgrade
+****** add a hook to convert all optional (non-true) orphans to explicit packages -> or at least to check them after each upgrade -> ~pacman -Qttdq~ 
 
 ***** Backup
 ****** figure out how to restore ~personal~ data

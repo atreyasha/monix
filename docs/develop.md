@@ -37,7 +37,7 @@
 
     6.  add a hook to convert all optional (non-true) orphans to
         explicit packages -\> or at least to check them after each
-        upgrade
+        upgrade -\> `pacman -Qttdq`
 
 3.  Backup
 
