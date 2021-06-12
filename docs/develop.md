@@ -9,33 +9,33 @@
 
 1.  Specific extra minimal tasks
 
-    1.  find a way to manually create `downloads` from qutebrowser, or
-        do it while creating filesystem structure
+    1.  **TODO** find a way to manually create `downloads`
+        from qutebrowser, or do it while creating filesystem structure
 
-    2.  deploy all private files from private repo, or think of secure
-        way to handle this -\> adjust `dotfiles` as well since GPG key
-        is needed to commit
-
-    3.  make script work such that re-installing can be done harmlessly
-        even on fully installed system
+    2.  **TODO** deploy all private files from private repo,
+        or think of secure way to handle this -\> adjust `dotfiles` as
+        well since GPG key is needed to commit
 
 2.  Next tasks
 
-    1.  add hook to automatically track downgraded packages as well and
+    1.  make script work such that re-installing can be done harmlessly
+        even on fully installed system
+
+    2.  add hook to automatically track downgraded packages as well and
         add conditional when installing them to check if the array is
         not empty -\> coordinate with `downgrade`
 
-    2.  add a new test suite to check for downgraded packages
+    3.  add a new test suite to check for downgraded packages
 
-    3.  possibly add pacman hook to update package lists + `pip` in
+    4.  possibly add pacman hook to update package lists + `pip` in
         `monix`:
         <https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#List_of_installed_packages>
 
-    4.  add a test hook after every system update to ensure tracked
+    5.  add a test hook after every system update to ensure tracked
         files are the same -\> think of how to update configuration
         files in both directions seamlessly
 
-    5.  add a hook to convert all optional (non-true) orphans to
+    6.  add a hook to convert all optional (non-true) orphans to
         explicit packages -\> or at least to check them after each
         upgrade
 
