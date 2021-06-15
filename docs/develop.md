@@ -9,10 +9,13 @@
 
 1.  Specific extra minimal tasks
 
-    1.  **TODO** find a way to manually create `downloads`
+    1.  **TODO** add `sync` target to monix and private
+        makefiles which can sync certain files that need to be copied
+
+    2.  **TODO** find a way to manually create `downloads`
         from qutebrowser, or do it while creating filesystem structure
 
-    2.  **TODO** deploy all private files from private repo,
+    3.  **TODO** deploy all private files from private repo,
         or think of secure way to handle this -\> adjust `dotfiles` as
         well since GPG key is needed to commit
 

@@ -5,6 +5,7 @@
 ** Tasks
 *** Arch linux reproducibility script
 ***** Specific extra minimal tasks
+****** TODO add ~sync~ target to monix and private makefiles which can sync certain files that need to be copied
 ****** TODO find a way to manually create ~downloads~ from qutebrowser, or do it while creating filesystem structure
 ****** TODO deploy all private files from private repo, or think of secure way to handle this -> adjust ~dotfiles~ as well since GPG key is needed to commit
 
