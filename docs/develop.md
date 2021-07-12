@@ -42,7 +42,18 @@
         explicit packages -\> or at least to check them after each
         upgrade -\> `pacman -Qttdq`
 
-3.  Backup
+3.  Encryption
+
+    1.  Find reasonable technique of encrypting system and use this on
+        all future systems
+
+        1.  practice this on virtual machine first and then migrate to
+            real hardware
+
+        2.  reinstall arch on own hardware with encrypted version and
+            add this to readme as well
+
+4.  Backup
 
     1.  figure out how to restore `personal` data
 

@@ -17,6 +17,11 @@
 ****** add a test hook after every system update to ensure tracked files are the same -> think of how to update configuration files in both directions seamlessly
 ****** add a hook to convert all optional (non-true) orphans to explicit packages -> or at least to check them after each upgrade -> ~pacman -Qttdq~ 
 
+***** Encryption
+****** Find reasonable technique of encrypting system and use this on all future systems
+******* practice this on virtual machine first and then migrate to real hardware
+******* reinstall arch on own hardware with encrypted version and add this to readme as well
+
 ***** Backup
 ****** figure out how to restore ~personal~ data
 ****** figure out how to restore private dotfiles like ~neomutt~, ~ssh~, ~gnupg~ and ~pass~ files -> to fully emulate current distribution
