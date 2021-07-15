@@ -11,7 +11,9 @@ Next
 2.  **TODO** manually create basic directories such as
     `downloads` and `desktop` directory for qutebrowser
 
-3.  File-system encryption
+Long-term
+
+1.  File-system encryption
 
     1.  practice this on virtual machine first and then migrate to real
         hardware
@@ -19,16 +21,6 @@ Next
     2.  reinstall arch on own hardware with encrypted version
 
     3.  add this information to readme pre-monix
-
-Long-term
-
-1.  Downgrade-related
-
-    1.  add hook to automatically track downgraded packages as well and
-        add conditional when installing them to check if the array is
-        not empty -\> coordinate with `downgrade`
-
-    2.  add a new test suite to check for downgraded packages
 
 2.  Pacman hooks
 
@@ -43,3 +35,11 @@ Long-term
     3.  add a hook to convert all optional (non-true) orphans to
         explicit packages -\> or at least to check them after each
         upgrade -\> `pacman -Qttdq`
+
+3.  Downgrade-related
+
+    1.  add hook to automatically track downgraded packages as well and
+        add conditional when installing them to check if the array is
+        not empty -\> coordinate with `downgrade`
+
+    2.  add a new test suite to check for downgraded packages

@@ -6,18 +6,18 @@
 **** Next
 ***** TODO add ~sync~ target to monix and private makefiles which can sync certain files that need to be copied
 ***** TODO manually create basic directories such as ~downloads~ and ~desktop~ directory for qutebrowser
-
+       
+**** Long-term
 ***** File-system encryption
 ****** practice this on virtual machine first and then migrate to real hardware
 ****** reinstall arch on own hardware with encrypted version
 ****** add this information to readme pre-monix
-       
-**** Long-term
-***** Downgrade-related
-****** add hook to automatically track downgraded packages as well and add conditional when installing them to check if the array is not empty -> coordinate with ~downgrade~
-****** add a new test suite to check for downgraded packages
 
 ***** Pacman hooks
 ****** possibly add pacman hook to update package lists + ~pip~ in ~monix~: https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#List_of_installed_packages
 ****** add a test hook after every system update to ensure tracked files are the same -> think of how to update configuration files in both directions seamlessly
 ****** add a hook to convert all optional (non-true) orphans to explicit packages -> or at least to check them after each upgrade -> ~pacman -Qttdq~ 
+       
+***** Downgrade-related
+****** add hook to automatically track downgraded packages as well and add conditional when installing them to check if the array is not empty -> coordinate with ~downgrade~
+****** add a new test suite to check for downgraded packages
