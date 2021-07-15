@@ -46,10 +46,15 @@ Long-term
 
 3.  Backup
 
-    1.  re-arrange system to keep personal data in single location,
-        which should be backed up regularly
+    1.  reduce size of `personal` directory to keep only important data
 
-    2.  optimize the scheduling of backups and find an elegant of making
-        this work
+    2.  optimize an elegant and portable backup scheduling of the
+        `personal` directory
 
-    3.  organize drive to ensure backups all make good sense
+    3.  perhaps use tarballs with `rsync` to ensure only relevant data
+        is updated
+
+    4.  think of separating important and unimportant data -\> only back
+        up the important data
+
+    5.  organize drive to ensure backups all make good sense
