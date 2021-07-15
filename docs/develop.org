@@ -21,10 +21,3 @@
 ****** possibly add pacman hook to update package lists + ~pip~ in ~monix~: https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#List_of_installed_packages
 ****** add a test hook after every system update to ensure tracked files are the same -> think of how to update configuration files in both directions seamlessly
 ****** add a hook to convert all optional (non-true) orphans to explicit packages -> or at least to check them after each upgrade -> ~pacman -Qttdq~ 
-
-***** Backup
-****** reduce size of ~personal~ directory to keep only important data 
-****** optimize an elegant and portable backup scheduling of the ~personal~ directory
-****** perhaps use tarballs with ~rsync~ to ensure only relevant data is updated
-****** think of separating important and unimportant data -> only back up the important data
-****** organize drive to ensure backups all make good sense

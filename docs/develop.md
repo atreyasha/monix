@@ -43,18 +43,3 @@ Long-term
     3.  add a hook to convert all optional (non-true) orphans to
         explicit packages -\> or at least to check them after each
         upgrade -\> `pacman -Qttdq`
-
-3.  Backup
-
-    1.  reduce size of `personal` directory to keep only important data
-
-    2.  optimize an elegant and portable backup scheduling of the
-        `personal` directory
-
-    3.  perhaps use tarballs with `rsync` to ensure only relevant data
-        is updated
-
-    4.  think of separating important and unimportant data -\> only back
-        up the important data
-
-    5.  organize drive to ensure backups all make good sense
