@@ -11,6 +11,9 @@ Next
 2.  **TODO** manually create basic directories such as
     `downloads` and `desktop` directory for qutebrowser
 
+3.  **TODO** commit `downgrade.conf` to repository as well
+    with its own `Makefile` and test routine
+
 Long-term
 
 1.  File-system encryption

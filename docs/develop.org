@@ -6,7 +6,8 @@
 **** Next
 ***** TODO add ~sync~ target to monix and private makefiles which can sync certain files that need to be copied
 ***** TODO manually create basic directories such as ~downloads~ and ~desktop~ directory for qutebrowser
-       
+***** TODO commit ~downgrade.conf~ to repository as well with its own ~Makefile~ and test routine
+
 **** Long-term
 ***** File-system encryption
 ****** practice this on virtual machine with new ~dotfiles~ workflows as well
