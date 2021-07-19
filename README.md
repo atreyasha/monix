@@ -6,6 +6,12 @@ This repository documents workflows to reproduce a minimal Arch Linux build call
 <img src="https://archlinux.org/static/logos/legacy/arch-legacy-noodle-box.eb6d7aaefe13.svg">
 </p>
 
+For managing dependencies and automatically formatting the development log in this repository, initialize a local pre-commit hook:
+
+```
+$ make init
+```
+
 ## Installation from live medium
 
 For this first step, follow the instructions from the Arch Linux installation [guide](https://wiki.archlinux.org/title/Installation_guide).
