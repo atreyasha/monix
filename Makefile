@@ -6,6 +6,10 @@ UFW     ?= /etc/ufw
 CONF    ?= ./conf
 TARGETS =
 
+.PHONY: init
+init:
+	cp "./hooks/pre-commit" "./.git/hooks/"
+
 .PHONY: yay
 TARGETS += yay
 yay:
