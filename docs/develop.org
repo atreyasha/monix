@@ -5,6 +5,7 @@
 ** Tasks
 **** Next
 ***** TODO add ~sync~ target to monix and private makefiles which can sync certain files that need to be copied
+****** figure out how to make this interact gracefully with code in ~test~ -> re-use test cases
 ***** TODO manually create basic directories such as ~downloads~ and ~desktop~ directory for qutebrowser
 ***** TODO commit ~downgrade.conf~ to repository as well with its own ~Makefile~ and test routine
 

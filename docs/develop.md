@@ -8,6 +8,9 @@ Next
 1.  **TODO** add `sync` target to monix and private makefiles
     which can sync certain files that need to be copied
 
+    1.  figure out how to make this interact gracefully with code in
+        `test` -\> re-use test cases
+
 2.  **TODO** manually create basic directories such as
     `downloads` and `desktop` directory for qutebrowser
 
