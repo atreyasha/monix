@@ -14,12 +14,6 @@
 ****** figure out how to make this interact gracefully with code in ~test~ -> re-use test cases
 
 **** Long-term
-***** Repository workflow
-****** consider replacing ~cp~ with ~rsync~, which can preserve directory trees -> can encode directories similar to ~stow~ but with hard files instead of links
-****** think about combining home and root partitions, such that ~monix~ can be used effectively with ~stow~ instead of copied files
-******* need to think more about the practicality and necessity of this
-******* or try repository again using stow to check if things work
-
 ***** File-system encryption
 ****** practice this on virtual machine with new ~dotfiles~ workflows as well
 ****** reinstall arch on own hardware with encrypted version
@@ -28,8 +22,14 @@
 ***** Pacman hooks and/or update management scripts in ~dotfiles~
 ****** add a hook to convert all optional (non-true) orphans to explicit packages -> or at least to check them after each upgrade -> ~pacman -Qttdq~ 
 ****** *possible duplicate:* add pacman hook to update package lists + ~pip~ in ~monix~: https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#List_of_installed_packages
-****** *possible duplicate:* add a test hook after every system update to ensure tracked files are the same -> think of how to update configuration files in both directions seamlessly
+****** *possible duplicate:* add a test hook after every system update to ensure tracked files are the same -> think of how to update configuration files in both directions seamlessly 
        
+***** Repository workflow
+****** consider replacing ~cp~ with ~rsync~, which can preserve directory trees -> can encode directories similar to ~stow~ but with hard files instead of links
+****** think about combining home and root partitions, such that ~monix~ can be used effectively with ~stow~ instead of copied files
+******* need to think more about the practicality and necessity of this
+******* or try repository again using stow to check if things work
+
 ***** Downgrade-related
 ****** add hook to automatically track downgraded packages as well and add conditional when installing them to check if the array is not empty -> coordinate with ~downgrade~
 ****** this should be synced with update management scripts in ~dotfiles~
