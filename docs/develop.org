@@ -3,13 +3,23 @@
 #+OPTIONS: p:t
 
 ** Tasks
-**** Next
-***** TODO add ~sync~ target to monix and private makefiles which can sync certain files that need to be copied
+**** TODO Next
+***** use ~localectl~ to add X-keyboard-mapping file so it does not get forgotten and reset to ~us~ -> add this to routines, test and readme as well
+****** consider removing this from ~.xinitrc~ since it is read from the system
+****** think of which part of ~monix~ to place this in -> either readme or conf
+****** test this routine with fixture of ~localectl~ command -> this should be better than using ~setxkbmap~ which is only necessary within an X session
+***** manually create basic directories such as ~downloads~ and ~desktop~ directory for qutebrowser
+***** commit ~downgrade.conf~ to repository as well with its own ~Makefile~ and test routine
+***** add ~sync~ target to monix and private makefiles which can sync certain files that need to be copied
 ****** figure out how to make this interact gracefully with code in ~test~ -> re-use test cases
-***** TODO manually create basic directories such as ~downloads~ and ~desktop~ directory for qutebrowser
-***** TODO commit ~downgrade.conf~ to repository as well with its own ~Makefile~ and test routine
 
 **** Long-term
+***** Repository workflow
+****** consider replacing ~cp~ with ~rsync~, which can preserve directory trees -> can encode directories similar to ~stow~ but with hard files instead of links
+****** think about combining home and root partitions, such that ~monix~ can be used effectively with ~stow~ instead of copied files
+******* need to think more about the practicality and necessity of this
+******* or try repository again using stow to check if things work
+
 ***** File-system encryption
 ****** practice this on virtual machine with new ~dotfiles~ workflows as well
 ****** reinstall arch on own hardware with encrypted version
