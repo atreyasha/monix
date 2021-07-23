@@ -19,6 +19,9 @@
         should be better than using `setxkbmap` which is only necessary
         within an X session
 
+    4.  possibly don\'t need to include hard file, just use `localectl`
+        command once and add fixture to test
+
 2.  manually create basic directories such as `downloads` and `desktop`
     directory for qutebrowser
 

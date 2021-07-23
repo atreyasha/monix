@@ -8,6 +8,7 @@
 ****** consider removing this from ~.xinitrc~ since it is read from the system
 ****** think of which part of ~monix~ to place this in -> either readme or conf
 ****** test this routine with fixture of ~localectl~ command -> this should be better than using ~setxkbmap~ which is only necessary within an X session
+****** possibly don't need to include hard file, just use ~localectl~ command once and add fixture to test
 ***** manually create basic directories such as ~downloads~ and ~desktop~ directory for qutebrowser
 ***** commit ~downgrade.conf~ to repository as well with its own ~Makefile~ and test routine
 ***** add ~sync~ target to monix and private makefiles which can sync certain files that need to be copied
