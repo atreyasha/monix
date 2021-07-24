@@ -3,28 +3,28 @@
 # vim: syntax=sh
 
 # check for VM and assign variable
-grep "hypervisor" /proc/cpuinfo &>/dev/null && VM="1" || VM="0"
+grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 
 @test "checking yay" {
   pacman -Qi yay
 }
 
 @test "checking native pacman packages" {
-  installed="$(pacman -Qqen | xargs)"
+  status="$(pacman -Qqen | xargs)"
   compare="$(cat pkg/pacman_native | xargs)"
-  [ "$installed" = "$compare" ]
+  [ "$status" = "$compare" ]
 }
 
 @test "checking AUR packages" {
-  installed="$(pacman -Qqem | xargs)"
+  status="$(pacman -Qqem | xargs)"
   compare="$(cat pkg/pacman_foreign | xargs)"
-  [ "$installed" = "$compare" ]
+  [ "$status" = "$compare" ]
 }
 
 @test "checking pypi packages" {
-  installed="$(pip freeze --user | xargs)"
+  status="$(pip freeze --user | xargs)"
   compare="$(cat pkg/requirements.txt | xargs)"
-  [ "$installed" = "$compare" ]
+  [ "$status" = "$compare" ]
 }
 
 @test "checking ufw status" {
@@ -67,26 +67,32 @@ grep "hypervisor" /proc/cpuinfo &>/dev/null && VM="1" || VM="0"
 }
 
 @test "checking TLP configuration" {
-  cmp conf/tlp.conf /etc/tlp.conf
+  cmp "conf/tlp.conf" "/etc/tlp.conf"
 }
 
 @test "checking UDEV rules" {
-  cmp conf/60-onbattery.rules /etc/udev/rules.d/60-onbattery.rules
-  cmp conf/61-onpower.rules /etc/udev/rules.d/61-onpower.rules
+  cmp "conf/60-onbattery.rules" "/etc/udev/rules.d/60-onbattery.rules"
+  cmp "conf/61-onpower.rules" "/etc/udev/rules.d/61-onpower.rules"
 }
 
 @test "checking ACPI audio jack" {
-  cmp conf/audio_jack /etc/acpi/events/audio_jack
+  cmp "conf/audio_jack" "/etc/acpi/events/audio_jack"
 }
 
 @test "checking systemd pre-sleep hook" {
-  cmp conf/pre-sleep@.service /etc/systemd/system/pre-sleep@.service
+  cmp "conf/pre-sleep@.service" "/etc/systemd/system/pre-sleep@.service"
   systemctl is-enabled "pre-sleep@$USER.service"
 }
 
 @test "checking pacman hooks" {
-  cmp conf/pacdiff.hook /etc/pacman.d/hooks/pacdiff.hook
-  cmp conf/paccache.hook /etc/pacman.d/hooks/paccache.hook
+  cmp "conf/pacdiff.hook" "/etc/pacman.d/hooks/pacdiff.hook"
+  cmp "conf/paccache.hook" "/etc/pacman.d/hooks/paccache.hook"
+}
+
+@test "checking downgrade conf" {
+	status="$(envsubst < conf/downgrade.conf | xargs)"
+  compare="$(cat /etc/xdg/downgrade/downgrade.conf | xargs)"
+  [ "$status" = "$compare" ]
 }
 
 @test "checking base directories" {

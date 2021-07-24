@@ -3,6 +3,7 @@ ACPI      ?= /etc/acpi/events
 SYSTEMD   ?= /etc/systemd/system
 UDEV      ?= /etc/udev/rules.d
 UFW       ?= /etc/ufw
+DOWNGRADE ?= /etc/xdg/downgrade
 MODPROBE  ?= /etc/modprobe.d
 CONF      ?= ./conf
 TARGETS   =
@@ -105,6 +106,11 @@ TARGETS += pacman_hooks
 pacman_hooks:
 	sudo install -Dm644 "$(CONF)/pacdiff.hook" -t "$(PACMAN)/hooks"
 	sudo install -Dm644 "$(CONF)/paccache.hook" -t "$(PACMAN)/hooks"
+
+.PHONY: downgrade_conf
+TARGETS += downgrade_conf
+downgrade_conf:
+	envsubst < "$(CONF)/downgrade.conf" | sudo tee "$(DOWNGRADE)/downgrade.conf"
 
 .PHONY: base_dirs
 TARGETS += base_dirs
