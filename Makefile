@@ -105,6 +105,12 @@ pacman_hooks:
 	sudo install -Dm644 "$(CONF)/pacdiff.hook" -t "$(PACMAN)/hooks"
 	sudo install -Dm644 "$(CONF)/paccache.hook" -t "$(PACMAN)/hooks"
 
+.PHONY: base_dirs
+TARGETS += base_dirs
+base_dirs:
+	mkdir -p "$$HOME/desktop/personal"
+	mkdir -p "$$HOME/downloads"
+
 .PHONY: install
 install: $(TARGETS)
 
