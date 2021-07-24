@@ -111,6 +111,11 @@ base_dirs:
 	mkdir -p "$$HOME/desktop/personal"
 	mkdir -p "$$HOME/downloads"
 
+.PHONY: xkbmap
+TARGETS += xkbmap
+xkbmap:
+	sudo localectl --no-convert set-x11-keymap de
+
 .PHONY: install
 install: $(TARGETS)
 

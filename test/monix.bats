@@ -93,3 +93,9 @@ grep "hypervisor" /proc/cpuinfo &>/dev/null && VM="1" || VM="0"
   [ -d "$HOME/desktop/personal" ]
   [ -d "$HOME/downloads" ]
 }
+
+@test "checking localectl" {
+  status="$(localectl | xargs)"
+  compare="$(cat test/fixtures/localectl | xargs)"
+  [ "$status" = "$compare" ]
+}
