@@ -5,61 +5,34 @@
 
 **TODO** Next
 
-1.  use `localectl` to add X-keyboard-mapping file so it does not get
-    forgotten and reset to `us` -\> add this to routines, test and
-    readme as well
-
-    1.  consider removing this from `.xinitrc` since it is read from the
-        system
-
-    2.  think of which part of `monix` to place this in -\> either
-        readme or conf
-
-    3.  test this routine with fixture of `localectl` command -\> this
-        should be better than using `setxkbmap` which is only necessary
-        within an X session
-
-    4.  possibly don\'t need to include hard file, just use `localectl`
-        command once and add fixture to test
-
-2.  manually create basic directories such as `downloads` and `desktop`
-    directory for qutebrowser
-
-3.  commit `downgrade.conf` to repository as well with its own
-    `Makefile` and test routine
-
-4.  add `sync` target to monix and private makefiles which can sync
+1.  add `sync` target to monix and private makefiles which can sync
     certain files that need to be copied
 
     1.  figure out how to make this interact gracefully with code in
         `test` -\> re-use test cases
 
+    2.  think of overall routine and whether hard copies are meaningful
+        or cause overfitting here, or whether symlinks would even make
+        sense or be worth the effort
+
+2.  test all of these changes with virtual machine, but try to keep
+    cache of packages instead of always re-installing -\> think of the
+    best way to do this, maybe with a shared folder
+
 Long-term
 
 1.  File-system encryption
 
-    1.  practice this on virtual machine with new `dotfiles` workflows
+    1.  practice this on new phyiscal system in September
+
+    2.  practice this on virtual machine with new `dotfiles` workflows
         as well
 
-    2.  reinstall arch on own hardware with encrypted version
+    3.  reinstall arch on own hardware with encrypted version
 
-    3.  add this information to readme pre-monix
+    4.  add this information to readme pre-monix
 
-2.  Pacman hooks and/or update management scripts in `dotfiles`
-
-    1.  add a hook to convert all optional (non-true) orphans to
-        explicit packages -\> or at least to check them after each
-        upgrade -\> `pacman -Qttdq`
-
-    2.  **possible duplicate:** add pacman hook to update package
-        lists + `pip` in `monix`:
-        <https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#List_of_installed_packages>
-
-    3.  **possible duplicate:** add a test hook after every system
-        update to ensure tracked files are the same -\> think of how to
-        update configuration files in both directions seamlessly
-
-3.  Repository workflow
+2.  Repository workflow
 
     1.  consider replacing `cp` with `rsync`, which can preserve
         directory trees -\> can encode directories similar to `stow` but
@@ -73,6 +46,22 @@ Long-term
             this
 
         2.  or try repository again using stow to check if things work
+
+        3.  or try other approaches which copy directory structures
+
+3.  Pacman hooks and/or update management scripts in `dotfiles`
+
+    1.  add a hook to convert all optional (non-true) orphans to
+        explicit packages -\> or at least to check them after each
+        upgrade -\> `pacman -Qttdq`
+
+    2.  **possible duplicate:** add pacman hook to update package
+        lists + `pip` in `monix`:
+        <https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#List_of_installed_packages>
+
+    3.  **possible duplicate:** add a test hook after every system
+        update to ensure tracked files are the same -\> think of how to
+        update configuration files in both directions seamlessly
 
 4.  Downgrade-related
 
