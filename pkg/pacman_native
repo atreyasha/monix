@@ -47,6 +47,7 @@ gifsicle
 gifski
 gimp
 git
+git-crypt
 git-lfs
 gnome-themes-extra
 graphviz
@@ -160,6 +161,7 @@ ripgrep
 rofi
 rsync
 ruby
+ruby2.7
 s-nail
 screenkey
 scrot
