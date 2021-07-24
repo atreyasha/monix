@@ -1,10 +1,11 @@
-PACMAN  ?= /etc/pacman.d
-ACPI    ?= /etc/acpi/events
-SYSTEMD ?= /etc/systemd/system
-UDEV    ?= /etc/udev/rules.d
-UFW     ?= /etc/ufw
-CONF    ?= ./conf
-TARGETS =
+PACMAN    ?= /etc/pacman.d
+ACPI      ?= /etc/acpi/events
+SYSTEMD   ?= /etc/systemd/system
+UDEV      ?= /etc/udev/rules.d
+UFW       ?= /etc/ufw
+MODPROBE  ?= /etc/modprobe.d
+CONF      ?= ./conf
+TARGETS   =
 
 .PHONY: init
 init:
@@ -67,7 +68,7 @@ timesync:
 .PHONY: disable_beep
 TARGETS += disable_beep
 disable_beep:
-	echo "blacklist pcspkr" | sudo tee "/etc/modprobe.d/nobeep.conf"
+	echo "blacklist pcspkr" | sudo tee "$(MODPROBE)/nobeep.conf"
 
 .PHONY: light
 TARGETS += light
