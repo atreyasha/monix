@@ -90,7 +90,7 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 }
 
 @test "checking downgrade conf" {
-	status="$(envsubst < conf/downgrade.conf | xargs)"
+  status="$(envsubst < conf/downgrade.conf | xargs)"
   compare="$(cat /etc/xdg/downgrade/downgrade.conf | xargs)"
   [ "$status" = "$compare" ]
 }
