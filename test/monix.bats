@@ -88,3 +88,8 @@ grep "hypervisor" /proc/cpuinfo &>/dev/null && VM="1" || VM="0"
   cmp conf/pacdiff.hook /etc/pacman.d/hooks/pacdiff.hook
   cmp conf/paccache.hook /etc/pacman.d/hooks/paccache.hook
 }
+
+@test "checking base directories" {
+  [ -d "$HOME/desktop/personal" ]
+  [ -d "$HOME/downloads" ]
+}
