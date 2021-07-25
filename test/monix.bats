@@ -29,6 +29,7 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 
 @test "checking ufw status" {
   systemctl is-enabled ufw.service
+  systemctl is-active ufw.service
   status="$(sudo ufw status verbose | xargs)"
   compare="$(cat test/fixtures/ufw_status | xargs)"
   [ "$status" = "$compare" ]
@@ -41,10 +42,12 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 
 @test "checking networkmanager" {
   systemctl is-enabled NetworkManager.service
+  systemctl is-active NetworkManager.service
 }
 
 @test "checking timesync" {
   systemctl is-enabled systemd-timesyncd.service
+  systemctl is-active systemd-timesyncd.service
   status="$(timedatectl show -p NTP)"
   compare="$(cat test/fixtures/timedatectl_ntp | xargs)"
   if ((!VM)); then
@@ -67,6 +70,8 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 }
 
 @test "checking TLP configuration" {
+  systemctl is-enabled tlp.service
+  systemctl is-active tlp.service
   cmp "conf/tlp.conf" "/etc/tlp.conf"
 }
 
@@ -76,12 +81,14 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 }
 
 @test "checking ACPI audio jack" {
+  systemctl is-enabled acpid.service
+  systemctl is-active acpid.service
   cmp "conf/audio_jack" "/etc/acpi/events/audio_jack"
 }
 
 @test "checking systemd pre-sleep hook" {
-  cmp "conf/pre-sleep@.service" "/etc/systemd/system/pre-sleep@.service"
   systemctl is-enabled "pre-sleep@$USER.service"
+  cmp "conf/pre-sleep@.service" "/etc/systemd/system/pre-sleep@.service"
 }
 
 @test "checking pacman hooks" {
