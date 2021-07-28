@@ -104,8 +104,12 @@ systemd_pre_sleep:
 .PHONY: pacman_hooks
 TARGETS += pacman_hooks
 pacman_hooks:
-	sudo install -Dm644 "$(CONF)/pacdiff.hook" -t "$(PACMAN)/hooks"
-	sudo install -Dm644 "$(CONF)/paccache.hook" -t "$(PACMAN)/hooks"
+	temp_file="$$(mktemp)"; \
+	envsubst < "$(CONF)/1-packages.hook" | tee "$$temp_file"; \
+	sudo install -Dm644 "$$temp_file" -T "$(PACMAN)/hooks/1-packages.hook"
+	sudo install -Dm644 "$(CONF)/2-paccache.hook" -t "$(PACMAN)/hooks"
+	sudo install -Dm644 "$(CONF)/3-orphans.hook" -t "$(PACMAN)/hooks"
+	sudo install -Dm644 "$(CONF)/4-pacdiff.hook" -t "$(PACMAN)/hooks"
 
 .PHONY: downgrade_conf
 TARGETS += downgrade_conf
