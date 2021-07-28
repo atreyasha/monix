@@ -3,12 +3,6 @@
 #+OPTIONS: p:t
 
 ** Tasks
-**** Next
-***** TODO Pacman hooks
-****** add new hook to keep ~pacman~ packages updated: https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#List_of_installed_packages
-****** add new hook to print true and non-true orphans after each upgrade
-******* ~pacman -Qtdq~ and ~pacman -Qttdq~ -> simply print and inform user
-
 **** Long-term
 ***** File-system encryption
 ****** practice this on new phyiscal system in September 
@@ -30,6 +24,7 @@
 ****** add pacman hook to update downgraded packages when feature is available upstream
 ****** add workflow to install ~downgrade~ packages from a file when available upstream
 ******* add conditional when installing to check array is not empty
+******* add conditional to do an emptiness check for ~pip~ packages as well
 ****** add a new test suite to check for downgraded packages sanity
 
 ***** Packages 

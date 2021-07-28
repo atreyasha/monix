@@ -3,19 +3,6 @@
 
 ## Tasks
 
-Next
-
-1.  **TODO** Pacman hooks
-
-    1.  add new hook to keep `pacman` packages updated:
-        <https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#List_of_installed_packages>
-
-    2.  add new hook to print true and non-true orphans after each
-        upgrade
-
-        1.  `pacman -Qtdq` and `pacman -Qttdq` -\> simply print and
-            inform user
-
 Long-term
 
 1.  File-system encryption
@@ -63,6 +50,9 @@ Long-term
         available upstream
 
         1.  add conditional when installing to check array is not empty
+
+        2.  add conditional to do an emptiness check for `pip` packages
+            as well
 
     3.  add a new test suite to check for downgraded packages sanity
 
