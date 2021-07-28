@@ -30,15 +30,15 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
   [ "$status" = "$compare" ]
 }
 
-@test "checking pip_pkgs" {
-  status="$(pip freeze --user | xargs)"
-  compare="$(cat pkg/requirements.txt | xargs)"
-  [ "$status" = "$compare" ]
-}
-
 @test "checking downgrade_conf" {
   status="$(envsubst < conf/downgrade.conf | xargs)"
   compare="$(cat /etc/xdg/downgrade/downgrade.conf | xargs)"
+  [ "$status" = "$compare" ]
+}
+
+@test "checking pip_pkgs" {
+  status="$(pip freeze --user | xargs)"
+  compare="$(cat pkg/requirements.txt | xargs)"
   [ "$status" = "$compare" ]
 }
 
