@@ -9,6 +9,15 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
   pacman -Qi yay
 }
 
+@test "checking pacman_hooks" {
+  status="$(envsubst < conf/1-packages.hook | xargs)"
+  compare="$(cat /etc/pacman.d/hooks/1-packages.hook | xargs)"
+  [ "$status" = "$compare" ]
+  cmp "conf/2-paccache.hook" "/etc/pacman.d/hooks/2-paccache.hook"
+  cmp "conf/3-orphans.hook" "/etc/pacman.d/hooks/3-orphans.hook"
+  cmp "conf/4-pacdiff.hook" "/etc/pacman.d/hooks/4-pacdiff.hook"
+}
+
 @test "checking pacman_native_pkgs" {
   status="$(pacman -Qqen | xargs)"
   compare="$(cat pkg/pacman_native | xargs)"
@@ -24,6 +33,12 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 @test "checking pip_pkgs" {
   status="$(pip freeze --user | xargs)"
   compare="$(cat pkg/requirements.txt | xargs)"
+  [ "$status" = "$compare" ]
+}
+
+@test "checking downgrade_conf" {
+  status="$(envsubst < conf/downgrade.conf | xargs)"
+  compare="$(cat /etc/xdg/downgrade/downgrade.conf | xargs)"
   [ "$status" = "$compare" ]
 }
 
@@ -89,21 +104,6 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 @test "checking systemd_pre_sleep" {
   systemctl is-enabled "pre-sleep@$USER.service"
   cmp "conf/pre-sleep@.service" "/etc/systemd/system/pre-sleep@.service"
-}
-
-@test "checking pacman_hooks" {
-  status="$(envsubst < conf/1-packages.hook | xargs)"
-  compare="$(cat /etc/pacman.d/hooks/1-packages.hook | xargs)"
-  [ "$status" = "$compare" ]
-  cmp "conf/2-paccache.hook" "/etc/pacman.d/hooks/2-paccache.hook"
-  cmp "conf/3-orphans.hook" "/etc/pacman.d/hooks/3-orphans.hook"
-  cmp "conf/4-pacdiff.hook" "/etc/pacman.d/hooks/4-pacdiff.hook"
-}
-
-@test "checking downgrade_conf" {
-  status="$(envsubst < conf/downgrade.conf | xargs)"
-  compare="$(cat /etc/xdg/downgrade/downgrade.conf | xargs)"
-  [ "$status" = "$compare" ]
 }
 
 @test "checking base_dirs" {

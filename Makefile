@@ -20,6 +20,16 @@ yay:
 	cd "$$tmp"; \
 	makepkg -si
 
+.PHONY: pacman_hooks
+TARGETS += pacman_hooks
+pacman_hooks:
+	temp_file="$$(mktemp)"; \
+	envsubst < "$(CONF)/1-packages.hook" | tee "$$temp_file"; \
+	sudo install -Dm644 "$$temp_file" -T "$(PACMAN)/hooks/1-packages.hook"
+	sudo install -Dm644 "$(CONF)/2-paccache.hook" -t "$(PACMAN)/hooks"
+	sudo install -Dm644 "$(CONF)/3-orphans.hook" -t "$(PACMAN)/hooks"
+	sudo install -Dm644 "$(CONF)/4-pacdiff.hook" -t "$(PACMAN)/hooks"
+
 .PHONY: pacman_native_pkgs
 TARGETS += pacman_native_pkgs
 pacman_native_pkgs:
@@ -30,6 +40,11 @@ pacman_native_pkgs:
 TARGETS += pacman_foreign_pkgs
 pacman_foreign_pkgs:
 	yay -S --needed - < "pkg/pacman_foreign"
+
+.PHONY: downgrade_conf
+TARGETS += downgrade_conf
+downgrade_conf:
+	envsubst < "$(CONF)/downgrade.conf" | sudo tee "$(DOWNGRADE)/downgrade.conf"
 
 .PHONY: downgrade_pkgs
 TARGETS += downgrade_pkgs
@@ -100,21 +115,6 @@ TARGETS += systemd_pre_sleep
 systemd_pre_sleep:
 	sudo install -Dm644 "$(CONF)/pre-sleep@.service" -t "$(SYSTEMD)"
 	sudo systemctl enable "pre-sleep@$$USER.service"
-
-.PHONY: pacman_hooks
-TARGETS += pacman_hooks
-pacman_hooks:
-	temp_file="$$(mktemp)"; \
-	envsubst < "$(CONF)/1-packages.hook" | tee "$$temp_file"; \
-	sudo install -Dm644 "$$temp_file" -T "$(PACMAN)/hooks/1-packages.hook"
-	sudo install -Dm644 "$(CONF)/2-paccache.hook" -t "$(PACMAN)/hooks"
-	sudo install -Dm644 "$(CONF)/3-orphans.hook" -t "$(PACMAN)/hooks"
-	sudo install -Dm644 "$(CONF)/4-pacdiff.hook" -t "$(PACMAN)/hooks"
-
-.PHONY: downgrade_conf
-TARGETS += downgrade_conf
-downgrade_conf:
-	envsubst < "$(CONF)/downgrade.conf" | sudo tee "$(DOWNGRADE)/downgrade.conf"
 
 .PHONY: base_dirs
 TARGETS += base_dirs
