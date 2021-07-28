@@ -6,6 +6,6 @@ Type = Package
 Target = *
 
 [Action]
-Description = Run paccache -rvk2
+Description = Checking for pacnew configurations
 When = PostTransaction
-Exec = /usr/bin/paccache -rvk2
+Exec = /usr/bin/pacdiff -o

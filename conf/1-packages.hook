@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Remove
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Updating pacman package lists
+When = PostTransaction
+Exec = /bin/sh -c '/usr/bin/pacman -Qqen > $HOME/monix/pkg/pacman_native; /usr/bin/pacman -Qqem > $HOME/monix/pkg/pacman_foreign'

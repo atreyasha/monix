@@ -6,6 +6,6 @@ Type = Package
 Target = *
 
 [Action]
-Description = Run pacdiff -o
+Description = Checking for true and optional orphans
 When = PostTransaction
-Exec = /usr/bin/pacdiff -o
+Exec = /bin/sh -c '/usr/bin/pacman -Qtdq; /usr/bin/pacman -Qttdq; true'
