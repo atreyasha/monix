@@ -92,8 +92,12 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 }
 
 @test "checking pacman_hooks" {
-  cmp "conf/pacdiff.hook" "/etc/pacman.d/hooks/pacdiff.hook"
-  cmp "conf/paccache.hook" "/etc/pacman.d/hooks/paccache.hook"
+  status="$(envsubst < conf/1-packages.hook | xargs)"
+  compare="$(cat /etc/pacman.d/hooks/1-packages.hook | xargs)"
+  [ "$status" = "$compare" ]
+  cmp "conf/2-paccache.hook" "/etc/pacman.d/hooks/2-paccache.hook"
+  cmp "conf/3-orphans.hook" "/etc/pacman.d/hooks/3-orphans.hook"
+  cmp "conf/4-pacdiff.hook" "/etc/pacman.d/hooks/4-pacdiff.hook"
 }
 
 @test "checking downgrade_conf" {
