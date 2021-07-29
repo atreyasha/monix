@@ -100,14 +100,20 @@ tlp:
 .PHONY: udev
 TARGETS += udev
 udev:
-	sudo install -Dm644 "$(CONF)/60-onbattery.rules" -t "$(UDEV)"
-	sudo install -Dm644 "$(CONF)/61-onpower.rules" -t "$(UDEV)"
+	temp_file="$$(mktemp)"; \
+	envsubst < "$(CONF)/60-onbattery.rules" | tee "$$temp_file"; \
+	sudo install -Dm644 "$$temp_file" -T "$(UDEV)/60-onbattery.rules"
+	temp_file="$$(mktemp)"; \
+	envsubst < "$(CONF)/61-onpower.rules" | tee "$$temp_file"; \
+	sudo install -Dm644 "$$temp_file" -T "$(UDEV)/61-onpower.rules"
 	sudo udevadm control --reload
 
 .PHONY: acpi
 TARGETS += acpi
 acpi:
-	sudo install -Dm644 "$(CONF)/audio_jack" -t "$(ACPI)"
+	temp_file="$$(mktemp)"; \
+	envsubst < "$(CONF)/audio_jack" | tee "$$temp_file"; \
+	sudo install -Dm644 "$$temp_file" -T "$(ACPI)/audio_jack"
 	sudo systemctl enable acpid.service
 
 .PHONY: systemd_pre_sleep
