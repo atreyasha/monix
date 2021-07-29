@@ -91,14 +91,20 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 }
 
 @test "checking udev" {
-  cmp "conf/60-onbattery.rules" "/etc/udev/rules.d/60-onbattery.rules"
-  cmp "conf/61-onpower.rules" "/etc/udev/rules.d/61-onpower.rules"
+  status="$(envsubst < conf/60-onbattery.rules | xargs)"
+  compare="$(cat /etc/udev/rules.d/60-onbattery.rules | xargs)"
+  [ "$status" = "$compare" ]
+  status="$(envsubst < conf/61-onpower.rules | xargs)"
+  compare="$(cat /etc/udev/rules.d/61-onpower.rules | xargs)"
+  [ "$status" = "$compare" ]
 }
 
 @test "checking acpi" {
   systemctl is-enabled acpid.service
   systemctl is-active acpid.service
-  cmp "conf/audio_jack" "/etc/acpi/events/audio_jack"
+  status="$(envsubst < conf/audio_jack | xargs)"
+  compare="$(cat /etc/acpi/events/audio_jack | xargs)"
+  [ "$status" = "$compare" ]
 }
 
 @test "checking systemd_pre_sleep" {
