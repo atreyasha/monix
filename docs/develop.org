@@ -10,7 +10,8 @@
 ****** reinstall arch on own hardware with encrypted version
 ****** add this information to readme pre-monix
 
-***** Sync and verify
+***** Clean, sync and verify
+****** implement cleaning of ~yay~ caches with paccache: https://github.com/Jguer/yay/issues/772
 ****** think about adding ~sync~ functionality in case tests fail, which automatically corrects tests instead of expecting the user to do this manually
 ****** test all of these changes with virtual machine, but try to keep cache of packages instead of always re-installing -> think of the best way to do this, maybe with a shared folder
  

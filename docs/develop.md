@@ -16,13 +16,16 @@ Long-term
 
     4.  add this information to readme pre-monix
 
-2.  Sync and verify
+2.  Clean, sync and verify
 
-    1.  think about adding `sync` functionality in case tests fail,
+    1.  implement cleaning of `yay` caches with paccache:
+        <https://github.com/Jguer/yay/issues/772>
+
+    2.  think about adding `sync` functionality in case tests fail,
         which automatically corrects tests instead of expecting the user
         to do this manually
 
-    2.  test all of these changes with virtual machine, but try to keep
+    3.  test all of these changes with virtual machine, but try to keep
         cache of packages instead of always re-installing -\> think of
         the best way to do this, maybe with a shared folder
 
