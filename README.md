@@ -54,23 +54,23 @@ For this first step, follow the instructions from the Arch Linux installation [g
 
 7. Configure your internet connection using `nmtui`, which should work for most connection types. Verify that your internet connection works by executing `ping www.example.com` and checking for successful packet transmission and receipt
 
-8. Clone this repository and install:
+8. Clone this repository in your `$HOME` directory and install:
 
     ```
-    $ git clone https://github.com/atreyasha/monix.git
-    $ cd monix
+    $ git -C $HOME clone https://github.com/atreyasha/monix.git
+    $ cd $HOME/monix
     $ make install
     ```
 
-9. Clone the [`dotfiles`](https://github.com/atreyasha/dotfiles) repository and install:
+9. Clone the [`dotfiles`](https://github.com/atreyasha/dotfiles) repository in your `$HOME` directory and install:
 
     ```
-    $ git clone https://github.com/atreyasha/dotfiles.git
-    $ cd dotfiles
+    $ git -C $HOME clone https://github.com/atreyasha/dotfiles.git
+    $ cd $HOME/dotfiles
     $ make install
     ```
 
-10. If you have any private dotfiles and data, deploy them now
+10. If you have any private dotfiles and data, deploy them now. In order to benefit from all the features of the `dotfiles` repository, rename your private dotfiles repository as `privates` and place it in your `$HOME` directory
 
 11. Reboot and enjoy!
 
