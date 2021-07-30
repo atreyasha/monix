@@ -72,7 +72,7 @@ For this first step, follow the instructions from the Arch Linux installation [g
     $ make install
     ```
 
-10. If you have any private dotfiles and data, deploy them now. In order to benefit from all the features of the `dotfiles` repository, rename your private dotfiles repository as `privates` and place it in your `$HOME` directory
+10. If you have any private dotfiles and data, deploy them now. In order to benefit from all the features of the `dotfiles` repository, rename your private dotfiles repository as `privates` and place it in your `$HOME` directory. This `privates` repository should contain a `Makefile` with a `test` target
 
 11. Reboot and enjoy!
 
