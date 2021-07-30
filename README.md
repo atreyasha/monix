@@ -24,7 +24,7 @@ For this first step, follow the instructions from the Arch Linux installation [g
 # pacstrap /mnt base base-devel linux-lts linux-firmware vim git networkmanager
 ```
 
-## Post reboot
+### Post reboot
 
 1. Log in to the freshly installed Arch Linux system as `root`
 
