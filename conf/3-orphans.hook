@@ -8,4 +8,4 @@ Target = *
 [Action]
 Description = Checking for true and optional orphans
 When = PostTransaction
-Exec = /bin/sh -c '/usr/bin/pacman -Qtdq; /usr/bin/pacman -Qttdq; true'
+Exec = /bin/bash -c '/usr/bin/pacman -Qtdq; /usr/bin/pacman -Qttdq; true'
