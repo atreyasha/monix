@@ -139,3 +139,6 @@ install: $(TARGETS)
 .PHONY: test
 test:
 	bats "test/monix.bats"
+	! git grep -rI "$$USER" conf &>/dev/null
+	! git grep -rI "$$HOME" conf &>/dev/null
+	! git grep -rI "/bin/sh" conf &>/dev/null
