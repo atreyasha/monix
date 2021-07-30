@@ -9,17 +9,16 @@
 ****** practice this on virtual machine with new ~dotfiles~ workflows as well
 ****** reinstall arch on own hardware with encrypted version
 ****** add this information to readme pre-monix
-
-***** Clean, sync and verify
-****** implement cleaning of ~yay~ caches with paccache: https://github.com/Jguer/yay/issues/772
-****** think about adding ~sync~ functionality in case tests fail, which automatically corrects tests instead of expecting the user to do this manually
 ****** test all of these changes with virtual machine, but try to keep cache of packages instead of always re-installing -> think of the best way to do this, maybe with a shared folder
- 
+
 ***** Installation workflow
 ****** EITHER consider replacing ~cp~ with ~rsync~, which can preserve directory trees -> can encode directories similar to ~stow~ but with hard files instead of links
 ****** OR consider combining home and root partitions, such that ~stow~ can be used with symlinks
 ******* need to think more about the practicality and necessity of this
 ******* perhaps hard-copies are enough since root-level configuration files are not likely to change
+
+***** Sync
+****** think about adding ~sync~ functionality in case tests fail, which automatically corrects tests instead of expecting the user to do this manually 
         
 ***** Downgrade
 ****** add pacman hook to update downgraded packages when feature is available upstream
@@ -28,5 +27,6 @@
 ******* add conditional to do an emptiness check for ~pip~ packages as well
 ****** add a new test suite to check for downgraded packages sanity
 
-***** Packages 
+***** Packages and cleaning 
 ****** look through ~pacman~ package list and remove unnecessary packages
+****** modify pacman hook for cleaning of ~yay~ caches with paccache: https://github.com/Jguer/yay/issues/772

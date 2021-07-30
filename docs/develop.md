@@ -16,20 +16,11 @@ Long-term
 
     4.  add this information to readme pre-monix
 
-2.  Clean, sync and verify
-
-    1.  implement cleaning of `yay` caches with paccache:
-        <https://github.com/Jguer/yay/issues/772>
-
-    2.  think about adding `sync` functionality in case tests fail,
-        which automatically corrects tests instead of expecting the user
-        to do this manually
-
-    3.  test all of these changes with virtual machine, but try to keep
+    5.  test all of these changes with virtual machine, but try to keep
         cache of packages instead of always re-installing -\> think of
         the best way to do this, maybe with a shared folder
 
-3.  Installation workflow
+2.  Installation workflow
 
     1.  EITHER consider replacing `cp` with `rsync`, which can preserve
         directory trees -\> can encode directories similar to `stow` but
@@ -43,6 +34,12 @@ Long-term
 
         2.  perhaps hard-copies are enough since root-level
             configuration files are not likely to change
+
+3.  Sync
+
+    1.  think about adding `sync` functionality in case tests fail,
+        which automatically corrects tests instead of expecting the user
+        to do this manually
 
 4.  Downgrade
 
@@ -59,7 +56,10 @@ Long-term
 
     3.  add a new test suite to check for downgraded packages sanity
 
-5.  Packages
+5.  Packages and cleaning
 
     1.  look through `pacman` package list and remove unnecessary
         packages
+
+    2.  modify pacman hook for cleaning of `yay` caches with paccache:
+        <https://github.com/Jguer/yay/issues/772>
