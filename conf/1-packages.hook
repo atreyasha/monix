@@ -8,4 +8,4 @@ Target = *
 [Action]
 Description = Updating pacman package lists
 When = PostTransaction
-Exec = /bin/bash -c '/usr/bin/pacman -Qqen > $HOME/monix/pkg/pacman_native; /usr/bin/pacman -Qqem > $HOME/monix/pkg/pacman_foreign'
+Exec = /bin/bash -c '[ -d "$HOME/monix" ] && /usr/bin/pacman -Qqen > "$HOME/monix/pkg/pacman_native"; [ -d "$HOME/monix" ] && /usr/bin/pacman -Qqem > "$HOME/monix/pkg/pacman_foreign"; true'
