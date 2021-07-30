@@ -12,7 +12,9 @@ For managing dependencies and automatically formatting the development log in th
 $ make init
 ```
 
-## Installation from live medium
+## Installation
+
+### Live medium
 
 For this first step, follow the instructions from the Arch Linux installation [guide](https://wiki.archlinux.org/title/Installation_guide).
 
@@ -22,7 +24,7 @@ For this first step, follow the instructions from the Arch Linux installation [g
 # pacstrap /mnt base base-devel linux-lts linux-firmware vim git networkmanager
 ```
 
-## Post initial-reboot
+## Post reboot
 
 1. Log in to the freshly installed Arch Linux system as `root`
 
@@ -37,7 +39,7 @@ For this first step, follow the instructions from the Arch Linux installation [g
     ```
     # useradd -m -G wheel <username>
     ```
-    
+
 4. Set a password for this user:
 
     ```
