@@ -48,6 +48,7 @@ gifski
 gimp
 git
 git-crypt
+git-filter-repo
 git-lfs
 gnome-themes-extra
 graphviz
