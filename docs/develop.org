@@ -4,6 +4,14 @@
 
 ** Tasks
 **** Long-term
+***** Conf-path management
+****** think about adding file or directory checks in ~systemd~, ~udev~ and ~acpi~ rules, since these files could be missing if ~dotfiles~ is not used
+******* maybe ~systemd~ has a file-existence checking option as a requisite 
+******* however, these frameworks will perform error handling well
+******* handling errors for them could lead to other problems
+******* best-case scenario would be user-level alternatives, but these are likely not possible
+******* i3blocks persistent queries are not very elegant and perhaps a bad use of resources -> also annoying since changes will always occur
+
 ***** File-system encryption
 ****** practice this on new phyiscal system in September 
 ****** practice this on virtual machine with new ~dotfiles~ workflows as well

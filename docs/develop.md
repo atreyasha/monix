@@ -5,7 +5,27 @@
 
 Long-term
 
-1.  File-system encryption
+1.  Conf-path management
+
+    1.  think about adding file or directory checks in `systemd`, `udev`
+        and `acpi` rules, since these files could be missing if
+        `dotfiles` is not used
+
+        1.  maybe `systemd` has a file-existence checking option as a
+            requisite
+
+        2.  however, these frameworks will perform error handling well
+
+        3.  handling errors for them could lead to other problems
+
+        4.  best-case scenario would be user-level alternatives, but
+            these are likely not possible
+
+        5.  i3blocks persistent queries are not very elegant and perhaps
+            a bad use of resources -\> also annoying since changes will
+            always occur
+
+2.  File-system encryption
 
     1.  practice this on new phyiscal system in September
 
@@ -20,7 +40,7 @@ Long-term
         cache of packages instead of always re-installing -\> think of
         the best way to do this, maybe with a shared folder
 
-2.  Installation workflow
+3.  Installation workflow
 
     1.  EITHER consider replacing `cp` with `rsync`, which can preserve
         directory trees -\> can encode directories similar to `stow` but
@@ -35,13 +55,13 @@ Long-term
         2.  perhaps hard-copies are enough since root-level
             configuration files are not likely to change
 
-3.  Sync
+4.  Sync
 
     1.  think about adding `sync` functionality in case tests fail,
         which automatically corrects tests instead of expecting the user
         to do this manually
 
-4.  Downgrade
+5.  Downgrade
 
     1.  add pacman hook to update downgraded packages when feature is
         available upstream
@@ -56,7 +76,7 @@ Long-term
 
     3.  add a new test suite to check for downgraded packages sanity
 
-5.  Packages and cleaning
+6.  Packages and cleaning
 
     1.  look through `pacman` package list and remove unnecessary
         packages
