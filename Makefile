@@ -125,7 +125,7 @@ systemd_pre_sleep:
 .PHONY: base_dirs
 TARGETS += base_dirs
 base_dirs:
-	mkdir -p "$$HOME/desktop/personal"
+	mkdir -p "$$HOME/desktop"
 	mkdir -p "$$HOME/downloads"
 
 .PHONY: localectl

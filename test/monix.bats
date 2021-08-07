@@ -113,7 +113,7 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 }
 
 @test "checking base_dirs" {
-  [ -d "$HOME/desktop/personal" ]
+  [ -d "$HOME/desktop" ]
   [ -d "$HOME/downloads" ]
 }
 
