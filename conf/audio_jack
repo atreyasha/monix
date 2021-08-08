@@ -1,3 +1,4 @@
 # Refresh i3blocks in case of jack event
+# Source: https://wiki.archlinux.org/title/Acpid#Alternative_configuration
 event=jack/*
 action=$HOME/bin/refresh-i3blocks-audio %e

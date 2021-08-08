@@ -1,3 +1,8 @@
+# Systemd service which is executed before a sleep event for locking
+# Source: https://wiki.archlinux.org/title/Power_management#Sleep_hooks
+# This solution is preferred over xss-lock since xss-lock gets triggered
+# on X-screensaver and DPMS events without a possibility of disabling
+
 [Unit]
 Description=User suspend actions
 Before=sleep.target

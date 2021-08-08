@@ -1,2 +1,3 @@
-# Rule for when switching to battery
+# Refresh i3blocks when switching to battery
+# Source: https://wiki.archlinux.org/title/udev#About_udev_rules
 SUBSYSTEM=="power_supply",ENV{POWER_SUPPLY_ONLINE}=="0",RUN+="$HOME/bin/refresh-i3blocks-battery"
