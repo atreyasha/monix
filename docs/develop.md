@@ -5,7 +5,37 @@
 
 Long-term
 
-1.  Conf-path management
+1.  Installation workflow
+
+    1.  EITHER consider replacing `cp` with `rsync`, which can preserve
+        directory trees -\> can encode directories similar to `stow` but
+        with hard files instead of links
+
+    2.  OR consider combining home and root partitions, such that `stow`
+        can be used with symlinks
+
+        1.  need to think more about the practicality and necessity of
+            this
+
+        2.  perhaps hard-copies are enough since root-level
+            configuration files are not likely to change
+
+2.  File-system encryption
+
+    1.  practice this on new phyiscal system in September
+
+    2.  practice this on virtual machine with new `dotfiles` workflows
+        as well
+
+    3.  reinstall arch on own hardware with encrypted version
+
+    4.  add this information to readme pre-monix
+
+    5.  test all of these changes with virtual machine, but try to keep
+        cache of packages instead of always re-installing -\> think of
+        the best way to do this, maybe with a shared folder
+
+3.  Conf-path management
 
     1.  think about adding file or directory checks in `systemd`, `udev`
         and `acpi` rules, since these files could be missing if
@@ -24,36 +54,6 @@ Long-term
         5.  i3blocks persistent queries are not very elegant and perhaps
             a bad use of resources -\> also annoying since changes will
             always occur
-
-2.  File-system encryption
-
-    1.  practice this on new phyiscal system in September
-
-    2.  practice this on virtual machine with new `dotfiles` workflows
-        as well
-
-    3.  reinstall arch on own hardware with encrypted version
-
-    4.  add this information to readme pre-monix
-
-    5.  test all of these changes with virtual machine, but try to keep
-        cache of packages instead of always re-installing -\> think of
-        the best way to do this, maybe with a shared folder
-
-3.  Installation workflow
-
-    1.  EITHER consider replacing `cp` with `rsync`, which can preserve
-        directory trees -\> can encode directories similar to `stow` but
-        with hard files instead of links
-
-    2.  OR consider combining home and root partitions, such that `stow`
-        can be used with symlinks
-
-        1.  need to think more about the practicality and necessity of
-            this
-
-        2.  perhaps hard-copies are enough since root-level
-            configuration files are not likely to change
 
 4.  Sync
 

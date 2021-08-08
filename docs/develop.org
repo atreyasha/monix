@@ -4,13 +4,11 @@
 
 ** Tasks
 **** Long-term
-***** Conf-path management
-****** think about adding file or directory checks in ~systemd~, ~udev~ and ~acpi~ rules, since these files could be missing if ~dotfiles~ is not used
-******* maybe ~systemd~ has a file-existence checking option as a requisite 
-******* however, these frameworks will perform error handling well
-******* handling errors for them could lead to other problems
-******* best-case scenario would be user-level alternatives, but these are likely not possible
-******* i3blocks persistent queries are not very elegant and perhaps a bad use of resources -> also annoying since changes will always occur
+***** Installation workflow
+****** EITHER consider replacing ~cp~ with ~rsync~, which can preserve directory trees -> can encode directories similar to ~stow~ but with hard files instead of links
+****** OR consider combining home and root partitions, such that ~stow~ can be used with symlinks
+******* need to think more about the practicality and necessity of this
+******* perhaps hard-copies are enough since root-level configuration files are not likely to change
 
 ***** File-system encryption
 ****** practice this on new phyiscal system in September 
@@ -19,11 +17,13 @@
 ****** add this information to readme pre-monix
 ****** test all of these changes with virtual machine, but try to keep cache of packages instead of always re-installing -> think of the best way to do this, maybe with a shared folder
 
-***** Installation workflow
-****** EITHER consider replacing ~cp~ with ~rsync~, which can preserve directory trees -> can encode directories similar to ~stow~ but with hard files instead of links
-****** OR consider combining home and root partitions, such that ~stow~ can be used with symlinks
-******* need to think more about the practicality and necessity of this
-******* perhaps hard-copies are enough since root-level configuration files are not likely to change
+***** Conf-path management
+****** think about adding file or directory checks in ~systemd~, ~udev~ and ~acpi~ rules, since these files could be missing if ~dotfiles~ is not used
+******* maybe ~systemd~ has a file-existence checking option as a requisite 
+******* however, these frameworks will perform error handling well
+******* handling errors for them could lead to other problems
+******* best-case scenario would be user-level alternatives, but these are likely not possible
+******* i3blocks persistent queries are not very elegant and perhaps a bad use of resources -> also annoying since changes will always occur
 
 ***** Sync
 ****** think about adding ~sync~ functionality in case tests fail, which automatically corrects tests instead of expecting the user to do this manually 
