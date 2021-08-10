@@ -1,6 +1,6 @@
 # monix
 
-This repository documents workflows to *reproduce* a minimal Arch Linux build called `monix`. While this repository sets up root-level configurations for the OS, the [`dotfiles`](https://github.com/atreyasha/dotfiles) repository can be used to set up user-level configurations. These are kept separate for modularity. All setup workflows have been tested on both virtual machines and hardware.
+This repository documents workflows to *reproduce* a minimal Arch Linux build called `monix`. While this repository sets up root-level configurations for the OS, the [`dotfiles`](https://github.com/atreyasha/dotfiles) repository is used to set up user-level configurations. These are kept separate for modularity, but are designed to be used together. All setup workflows have been tested on both virtual machines and hardware.
 
 <p align="center">
 <img src="https://archlinux.org/static/logos/legacy/arch-legacy-noodle-box.eb6d7aaefe13.svg">
