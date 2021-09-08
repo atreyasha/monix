@@ -61,6 +61,8 @@ Long-term
         which automatically corrects tests instead of expecting the user
         to do this manually
 
+        1.  this could help for `pip` packages as well
+
 5.  Downgrade
 
     1.  add pacman hook to update downgraded packages when feature is

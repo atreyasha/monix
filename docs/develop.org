@@ -27,7 +27,8 @@
 
 ***** Sync
 ****** think about adding ~sync~ functionality in case tests fail, which automatically corrects tests instead of expecting the user to do this manually 
-        
+******* this could help for ~pip~ packages as well
+  
 ***** Downgrade
 ****** add pacman hook to update downgraded packages when feature is available upstream
 ****** add workflow to install ~downgrade~ packages from a file when available upstream
