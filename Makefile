@@ -133,6 +133,13 @@ TARGETS += localectl
 localectl:
 	sudo localectl --no-convert set-x11-keymap de
 
+.PHONY: docker
+TARGETS += docker
+docker:
+	sudo systemctl enable docker.service
+	sudo systemctl start docker.service
+	sudo usermod -a -G "docker" "$$USER"
+
 .PHONY: install
 install: $(TARGETS)
 
