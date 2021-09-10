@@ -2,6 +2,18 @@
 # -*- mode: shell-script -*-
 # vim: syntax=sh
 
+# include function to check for group membership
+check_group_membership() {
+  local against="$1"
+  groups=($(groups "$USER"))
+  for group in "${groups[@]}"; do
+    if [ "$group" = "$against" ]; then
+      return 0
+    fi
+  done
+  return 1
+}
+
 # check for VM and assign variable
 grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 
@@ -75,13 +87,7 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 }
 
 @test "checking light" {
-  groups=($(groups $USER))
-  for group in "${groups[@]}"; do
-    if [ "$group" = "video" ]; then
-      return 0
-    fi
-  done
-  return 1
+  check_group_membership "video"
 }
 
 @test "checking tlp" {
@@ -121,4 +127,10 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
   status="$(localectl | xargs)"
   compare="$(cat test/fixtures/localectl | xargs)"
   [ "$status" = "$compare" ]
+}
+
+@test "checking docker" {
+  systemctl is-enabled docker.service
+  systemctl is-active docker.service
+  check_group_membership "docker"
 }
