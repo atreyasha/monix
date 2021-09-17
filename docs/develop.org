@@ -25,10 +25,13 @@
 ******* best-case scenario would be user-level alternatives, but these are likely not possible
 ******* i3blocks persistent queries are not very elegant and perhaps a bad use of resources -> also annoying since changes will always occur
 
+***** General
+****** Look into slow wifi disabling on login -> appears to be slowed down due to docker booting up
+        
 ***** Sync
 ****** think about adding ~sync~ functionality in case tests fail, which automatically corrects tests instead of expecting the user to do this manually 
 ******* this could help for ~pip~ packages as well
-  
+        
 ***** Downgrade
 ****** add pacman hook to update downgraded packages when feature is available upstream
 ****** add workflow to install ~downgrade~ packages from a file when available upstream

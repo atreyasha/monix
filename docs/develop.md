@@ -55,7 +55,12 @@ Long-term
             a bad use of resources -\> also annoying since changes will
             always occur
 
-4.  Sync
+4.  General
+
+    1.  Look into slow wifi disabling on login -\> appears to be slowed
+        down due to docker booting up
+
+5.  Sync
 
     1.  think about adding `sync` functionality in case tests fail,
         which automatically corrects tests instead of expecting the user
@@ -63,7 +68,7 @@ Long-term
 
         1.  this could help for `pip` packages as well
 
-5.  Downgrade
+6.  Downgrade
 
     1.  add pacman hook to update downgraded packages when feature is
         available upstream
@@ -78,7 +83,7 @@ Long-term
 
     3.  add a new test suite to check for downgraded packages sanity
 
-6.  Packages and cleaning
+7.  Packages and cleaning
 
     1.  look through `pacman` package list and remove unnecessary
         packages
