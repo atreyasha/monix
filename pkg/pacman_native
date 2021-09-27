@@ -33,6 +33,7 @@ discount
 docbook-xml
 docbook-xsl
 docker
+docker-compose
 docopt
 efibootmgr
 emacs
@@ -107,7 +108,6 @@ mdadm
 mpdecimal
 mplayer
 msmtp
-mypy
 nano
 ncdu
 neomutt
@@ -166,7 +166,6 @@ rsync
 ruby
 ruby2.7
 s-nail
-scrapy
 screenkey
 scrot
 shellcheck
