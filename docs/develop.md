@@ -70,8 +70,8 @@ Long-term
 
 6.  Downgrade
 
-    1.  add pacman hook to update downgraded packages when feature is
-        available upstream
+    1.  add pacman hook to update/log downgraded packages when feature
+        is available upstream
 
     2.  add workflow to install `downgrade` packages from a file when
         available upstream

@@ -33,7 +33,7 @@
 ******* this could help for ~pip~ packages as well
         
 ***** Downgrade
-****** add pacman hook to update downgraded packages when feature is available upstream
+****** add pacman hook to update/log downgraded packages when feature is available upstream
 ****** add workflow to install ~downgrade~ packages from a file when available upstream
 ******* add conditional when installing to check array is not empty
 ******* add conditional to do an emptiness check for ~pip~ packages as well
