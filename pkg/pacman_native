@@ -143,6 +143,7 @@ pkgconf
 postgresql-libs
 pulseaudio
 pulseaudio-alsa
+pyenv
 python-babel
 python-jsonschema
 python-keyring
@@ -206,6 +207,7 @@ virtualbox
 virtualbox-guest-iso
 virtualbox-host-dkms
 w3m
+webkit2gtk
 wget
 which
 words
