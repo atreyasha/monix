@@ -173,6 +173,7 @@ shellcheck
 shfmt
 simplescreenrecorder
 slop
+sqlitebrowser
 stow
 sudo
 sxiv
