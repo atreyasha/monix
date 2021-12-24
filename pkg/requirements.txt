@@ -1,4 +1,4 @@
-autorandr==1.12.post1
+autorandr==1.12.1.post1
 i3-cycle==1.0
 i3-py==0.6.4
 i3-tree==0.2
