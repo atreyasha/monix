@@ -10,6 +10,10 @@
 ******* need to think more about the practicality and necessity of this
 ******* perhaps hard-copies are enough since root-level configuration files are not likely to change
 
+***** Network
+****** consider changing to another network manager such as ~connman~ for faster boot and resolving
+****** need to change many scripts in ~monix~ and ~dotfiles~ to reflect overall changes
+
 ***** File-system encryption
 ****** practice this on new phyiscal system in September 
 ****** practice this on virtual machine with new ~dotfiles~ workflows as well

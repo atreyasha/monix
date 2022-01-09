@@ -20,7 +20,15 @@ Long-term
         2.  perhaps hard-copies are enough since root-level
             configuration files are not likely to change
 
-2.  File-system encryption
+2.  Network
+
+    1.  consider changing to another network manager such as `connman`
+        for faster boot and resolving
+
+    2.  need to change many scripts in `monix` and `dotfiles` to reflect
+        overall changes
+
+3.  File-system encryption
 
     1.  practice this on new phyiscal system in September
 
@@ -35,7 +43,7 @@ Long-term
         cache of packages instead of always re-installing -\> think of
         the best way to do this, maybe with a shared folder
 
-3.  Conf-path management
+4.  Conf-path management
 
     1.  think about adding file or directory checks in `systemd`, `udev`
         and `acpi` rules, since these files could be missing if
@@ -55,12 +63,12 @@ Long-term
             a bad use of resources -\> also annoying since changes will
             always occur
 
-4.  General
+5.  General
 
     1.  Look into slow wifi disabling on login -\> appears to be slowed
         down due to docker booting up
 
-5.  Sync
+6.  Sync
 
     1.  think about adding `sync` functionality in case tests fail,
         which automatically corrects tests instead of expecting the user
@@ -68,7 +76,7 @@ Long-term
 
         1.  this could help for `pip` packages as well
 
-6.  Downgrade
+7.  Downgrade
 
     1.  add pacman hook to update/log downgraded packages when feature
         is available upstream
@@ -83,7 +91,7 @@ Long-term
 
     3.  add a new test suite to check for downgraded packages sanity
 
-7.  Packages and cleaning
+8.  Packages and cleaning
 
     1.  look through `pacman` package list and remove unnecessary
         packages
