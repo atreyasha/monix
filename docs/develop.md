@@ -22,10 +22,13 @@ Long-term
 
 2.  Network
 
-    1.  consider changing to another network manager such as `connman`
+    1.  find native way to truly disable wifi at boot without waiting
+        for connection
+
+    2.  consider changing to another network manager such as `connman`
         for faster boot and resolving
 
-    2.  need to change many scripts in `monix` and `dotfiles` to reflect
+    3.  need to change many scripts in `monix` and `dotfiles` to reflect
         overall changes
 
 3.  File-system encryption
