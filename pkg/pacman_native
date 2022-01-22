@@ -43,6 +43,7 @@ feh
 firefox
 flake8
 flex
+fzf
 gcc
 gcc-fortran
 gifsicle
