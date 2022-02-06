@@ -94,6 +94,12 @@ Long-term
 
     3.  add a new test suite to check for downgraded packages sanity
 
+    4.  ensure versions are also logged next to package names for
+        posterity
+
+    5.  add a pacman hook which updates downgraded packages list in
+        `monix` to keep records -\> add tests for check as well
+
 8.  Packages and cleaning
 
     1.  look through `pacman` package list and remove unnecessary

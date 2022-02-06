@@ -43,6 +43,8 @@
 ******* add conditional when installing to check array is not empty
 ******* add conditional to do an emptiness check for ~pip~ packages as well
 ****** add a new test suite to check for downgraded packages sanity
+****** ensure versions are also logged next to package names for posterity
+****** add a pacman hook which updates downgraded packages list in ~monix~ to keep records -> add tests for check as well
 
 ***** Packages and cleaning 
 ****** look through ~pacman~ package list and remove unnecessary packages
