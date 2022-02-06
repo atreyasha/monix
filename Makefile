@@ -49,7 +49,7 @@ downgrade_conf:
 .PHONY: downgrade_pkgs
 TARGETS += downgrade_pkgs
 downgrade_pkgs:
-	yes | sudo downgrade --ala-only picom=7.5-3 rofi=1.6.1-1
+	yes | sudo downgrade --ala-only picom=7.5-3
 
 .PHONY: pip_pkgs
 TARGETS += pip_pkgs
