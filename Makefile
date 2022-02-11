@@ -46,11 +46,6 @@ TARGETS += downgrade_conf
 downgrade_conf:
 	envsubst < "$(CONF)/downgrade.conf" | sudo tee "$(DOWNGRADE)/downgrade.conf"
 
-.PHONY: downgrade_pkgs
-TARGETS += downgrade_pkgs
-downgrade_pkgs:
-	yes | sudo downgrade --ala-only picom=7.5-3
-
 .PHONY: pip_pkgs
 TARGETS += pip_pkgs
 pip_pkgs:
