@@ -33,7 +33,7 @@ For this first step, follow the instructions from the Arch Linux installation [g
 2. Execute `EDITOR=vim visudo` to edit the `/etc/sudoers` file. Uncomment the following line to allow users from the `wheel` group to execute root-level commands with `sudo`:
 
     ```
-    %wheel      ALL=(ALL) ALL
+    %wheel ALL=(ALL:ALL) ALL
     ```
 
 3. Create a new user and add this user to the `wheel` group:
