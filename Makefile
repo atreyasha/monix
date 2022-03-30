@@ -20,16 +20,6 @@ yay:
 	cd "$$tmp"; \
 	makepkg -si
 
-.PHONY: pacman_hooks
-TARGETS += pacman_hooks
-pacman_hooks:
-	temp_file="$$(mktemp)"; \
-	envsubst < "$(CONF)/1-packages.hook" | tee "$$temp_file"; \
-	sudo install -Dm644 "$$temp_file" -T "$(PACMAN)/hooks/1-packages.hook"
-	sudo install -Dm644 "$(CONF)/2-paccache.hook" -t "$(PACMAN)/hooks"
-	sudo install -Dm644 "$(CONF)/3-orphans.hook" -t "$(PACMAN)/hooks"
-	sudo install -Dm644 "$(CONF)/4-pacdiff.hook" -t "$(PACMAN)/hooks"
-
 .PHONY: pacman_native_pkgs
 TARGETS += pacman_native_pkgs
 pacman_native_pkgs:
@@ -40,6 +30,16 @@ pacman_native_pkgs:
 TARGETS += pacman_foreign_pkgs
 pacman_foreign_pkgs:
 	yay -S --needed - < "pkg/pacman_foreign"
+
+.PHONY: pacman_hooks
+TARGETS += pacman_hooks
+pacman_hooks:
+	temp_file="$$(mktemp)"; \
+	envsubst < "$(CONF)/1-packages.hook" | tee "$$temp_file"; \
+	sudo install -Dm644 "$$temp_file" -T "$(PACMAN)/hooks/1-packages.hook"
+	sudo install -Dm644 "$(CONF)/2-paccache.hook" -t "$(PACMAN)/hooks"
+	sudo install -Dm644 "$(CONF)/3-orphans.hook" -t "$(PACMAN)/hooks"
+	sudo install -Dm644 "$(CONF)/4-pacdiff.hook" -t "$(PACMAN)/hooks"
 
 .PHONY: downgrade_conf
 TARGETS += downgrade_conf
