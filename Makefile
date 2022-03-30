@@ -44,6 +44,7 @@ pacman_foreign_pkgs:
 .PHONY: downgrade_conf
 TARGETS += downgrade_conf
 downgrade_conf:
+	mkdir -p "$(DOWNGRADE)"
 	envsubst < "$(CONF)/downgrade.conf" | sudo tee "$(DOWNGRADE)/downgrade.conf"
 
 .PHONY: pip_pkgs
