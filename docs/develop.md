@@ -20,6 +20,13 @@ Long-term
         2.  perhaps hard-copies are enough since root-level
             configuration files are not likely to change
 
+    3.  OR consider swapping to more declarative installation approach
+        such as with `ansible`
+
+        1.  this approach should be idempotent
+
+        2.  ideally, it should also support uninstallation
+
 2.  Network
 
     1.  find native way to truly disable wifi at boot without waiting

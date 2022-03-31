@@ -9,6 +9,9 @@
 ****** OR consider combining home and root partitions, such that ~stow~ can be used with symlinks
 ******* need to think more about the practicality and necessity of this
 ******* perhaps hard-copies are enough since root-level configuration files are not likely to change
+****** OR consider swapping to more declarative installation approach such as with ~ansible~
+******* this approach should be idempotent
+******* ideally, it should also support uninstallation
 
 ***** Network
 ****** find native way to truly disable wifi at boot without waiting for connection
