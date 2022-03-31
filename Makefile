@@ -44,8 +44,9 @@ pacman_hooks:
 .PHONY: downgrade_conf
 TARGETS += downgrade_conf
 downgrade_conf:
-	mkdir -p "$(DOWNGRADE)"
-	envsubst < "$(CONF)/downgrade.conf" | sudo tee "$(DOWNGRADE)/downgrade.conf"
+	temp_file="$$(mktemp)"; \
+	envsubst < "$(CONF)/downgrade.conf" | tee "$$temp_file"; \
+	sudo install -Dm644 "$$temp_file" -T "$(DOWNGRADE)/downgrade.conf"
 
 .PHONY: pip_pkgs
 TARGETS += pip_pkgs
