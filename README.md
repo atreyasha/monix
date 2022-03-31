@@ -56,7 +56,9 @@ For this first step, follow the instructions from the Arch Linux installation [g
     $ sudo systemctl start NetworkManager.service
     ```
 
-7. Configure your internet connection using `nmtui`, which should work for most connection types. Verify that your internet connection works by executing `ping www.example.com` and checking for successful packet transmission and receipt
+7. Configure your internet connection using `nmtui`, which should work for most connection types. Verify that your internet connection works by executing `ping www.example.com` and checking for successful packet transmission and receipt.
+
+    **Note:** `nmtui` could require `root` permissions at this point in time
 
 8. Clone this repository in your `$HOME` directory and install:
 
