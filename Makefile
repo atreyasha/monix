@@ -12,6 +12,11 @@ TARGETS   =
 init:
 	cp "./hooks/pre-commit" "./.git/hooks/"
 
+.PHONY: empty_pacman_hooks
+TARGETS += empty_pacman_hooks
+empty_pacman_hooks:
+	sudo rm -rf "$(PACMAN)/hooks"
+
 .PHONY: yay
 TARGETS += yay
 yay:
