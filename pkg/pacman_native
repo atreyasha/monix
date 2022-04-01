@@ -40,11 +40,15 @@ emacs
 fakeroot
 fd
 feh
+file
+findutils
 firefox
 flake8
 flex
+gawk
 gcc
 gcc-fortran
+gettext
 gifsicle
 gifski
 gimp
@@ -54,6 +58,7 @@ git-filter-repo
 git-lfs
 gnome-themes-extra
 graphviz
+grep
 groff
 grub
 gst-libav
@@ -62,6 +67,7 @@ gst-plugins-base
 gst-plugins-ugly
 gtk-engine-murrine
 gvim
+gzip
 hspell
 htop
 hunspell-en_us
@@ -131,6 +137,7 @@ openimageio
 openssh
 openssl-1.0
 p7zip
+pacman
 pacman-contrib
 pandoc
 pass
@@ -170,6 +177,7 @@ ruby2.7
 s-nail
 screenkey
 scrot
+sed
 shellcheck
 shfmt
 signal-desktop
