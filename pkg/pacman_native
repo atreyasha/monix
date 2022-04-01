@@ -129,7 +129,6 @@ openconnect
 openimageio
 openssh
 openssl-1.0
-otf-font-awesome
 p7zip
 pacman-contrib
 pandoc
@@ -199,7 +198,6 @@ tlp
 tlp-rdw
 tmux
 ttf-dejavu
-ttf-font-awesome
 ueberzug
 ufw
 unixodbc
