@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Pre-commit git hook which offers multiple functionalities,
-# including updating python dependencies, formatting shell and R scripts
+# including updating python dependencies, linting shell and R scripts
 # and converting an org document to markdown for logging purposes
 
 find_non_deleted_staged() {
@@ -15,7 +15,7 @@ update_python_dependencies() {
   # update requirements.txt given conditions
   if command -v poetry &>/dev/null; then
     mapfile -t poetry_staged < <(find_non_deleted_staged "poetry.lock")
-    if [ "${#poetry_staged[@]}" -ne "0" ]; then
+    if ((${#poetry_staged[@]})); then
       printf "%s\n" "Syncing python dependencies with poetry"
       poetry export -f requirements.txt --without-hashes -o requirements.txt
       git add "requirements.txt"
@@ -23,30 +23,28 @@ update_python_dependencies() {
   fi
 }
 
-format_shell_scripts() {
-  # function to format all shell files
-  local input shell_staged
-  input="$1"
-  # format staged shell scripts
+lint_shell_scripts() {
+  # function to lint all shell files
+  local input="$1" shell_staged
+  # lint staged shell scripts
   if command -v shfmt &>/dev/null; then
     mapfile -t shell_staged < <(find_non_deleted_staged "$input")
-    if [ "${#shell_staged[@]}" -ne "0" ]; then
-      printf "%s\n" "Formatting shell scripts with shfmt"
+    if ((${#shell_staged[@]})); then
+      printf "%s\n" "Linting shell scripts with shfmt"
       shfmt -w -i 2 "${shell_staged[@]}"
       git add "${shell_staged[@]}"
     fi
   fi
 }
 
-format_R_scripts() {
-  # function to format all R files
-  local input R_staged R_file
-  input="$1"
-  # format staged R files
+lint_R_scripts() {
+  # function to lint all R files
+  local input="$1" R_staged R_file
+  # lint staged R files
   if Rscript -e 'styler::style_file' &>/dev/null; then
     mapfile -t R_staged < <(find_non_deleted_staged "$input")
-    if [ "${#R_staged[@]}" -ne "0" ]; then
-      printf "%s\n" "Formatting R scripts"
+    if ((${#R_staged[@]})); then
+      printf "%s\n" "Linting R scripts"
       for R_file in "${R_staged[@]}"; do
         Rscript -e "styler::style_file(\"$R_file\")"
       done
@@ -57,12 +55,11 @@ format_R_scripts() {
 
 convert_org_to_md() {
   # function to convert org doc to markdown
-  local input output org_staged input_file
-  input="$1"
+  local input="$1" output org_staged input_file
   # conduct checks and convert
   if command -v pandoc &>/dev/null; then
     mapfile -t org_staged < <(find_non_deleted_staged "$input")
-    if [ "${#org_staged[@]}" -ne "0" ]; then
+    if ((${#org_staged[@]})); then
       for input_file in "${org_staged[@]}"; do
         [[ "$input_file" =~ .*\.org$ ]] || continue
         output="${input_file//.org/.md}"
@@ -76,6 +73,7 @@ convert_org_to_md() {
         # replace org-agenda markers cleanly
         sed -i 's/\[TODO\]{.*}/**TODO**/g; s/\[DONE\]{.*}/**DONE**/g' "$output"
         # replace startup visibility cleanly
+        # shellcheck disable=SC2016
         sed -i '/```{=org}/,/```/d' "$output"
         # stage new markdown for commit
         git add "$output"
@@ -88,8 +86,8 @@ main() {
   # main call to functions
   # NOTE: user edit(s) go here
   update_python_dependencies
-  format_shell_scripts "*.sh"
-  format_R_scripts "*.R"
+  lint_shell_scripts "*.sh"
+  lint_R_scripts "*.R"
   convert_org_to_md "*.org"
 }
 

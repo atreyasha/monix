@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Post-commit hook to rebase secondary branch with primary branch
+
+rebase_branch() {
+  # parse inputs and create local variables
+  local primary="$1"
+  shift
+  local secondary_branches=("$@")
+  local secondary stash_entry local_hash
+
+  # check that primary and secondary branches are well-defined
+  [[ -n "$primary" && -n "${secondary_branches[*]}" ]] || return 0
+
+  # loop over all secondary branches
+  for secondary in "${secondary_branches[@]}"; do
+    # check existence of secondary branch
+    git show-ref --verify --quiet "refs/heads/$secondary" || continue
+
+    # ensure current branch is primary
+    [ "$(git rev-parse --abbrev-ref HEAD)" == "$primary" ] || return 0
+
+    # execute rebasing process
+    printf "%s\n" "Rebasing $secondary with $primary"
+    local_hash=$(
+      date +%s | sha256sum | base64 | head -c 32
+      echo
+    )
+    git stash push -u -m "$local_hash"
+    git checkout "$secondary"
+    git rebase "$primary"
+    git checkout "$primary"
+    stash_entry=$(git stash list | grep "$local_hash" | grep -Eo "stash@{[0-9]+}")
+    if [ -n "$stash_entry" ]; then
+      git stash apply "$stash_entry"
+      git stash drop "$stash_entry"
+    fi
+  done
+}
+
+main() {
+  # main call to function
+  # NOTE: user edits go here
+  rebase_branch "main" "lenovo"
+}
+
+main
