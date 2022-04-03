@@ -11,6 +11,7 @@ TARGETS   =
 .PHONY: init
 init:
 	cp "./hooks/pre-commit" "./.git/hooks/"
+	cp "./hooks/post-commit" "./.git/hooks/"
 
 .PHONY: empty_pacman_hooks
 TARGETS += empty_pacman_hooks
