@@ -77,11 +77,13 @@ zsh:
 TARGETS += networkmanager
 networkmanager:
 	sudo systemctl enable NetworkManager.service
+	sudo systemctl start NetworkManager.service
 
 .PHONY: timesync
 TARGETS += timesync
 timesync:
 	sudo systemctl enable systemd-timesyncd.service
+	sudo systemctl start systemd-timesyncd.service
 	sudo timedatectl set-ntp true
 
 .PHONY: disable_beep
@@ -99,6 +101,7 @@ TARGETS += tlp
 tlp:
 	sudo install -Dm644 "$(CONF)/tlp.conf" -t "/etc"
 	sudo systemctl enable tlp.service
+	sudo systemctl start tlp.service
 
 .PHONY: udev
 TARGETS += udev
@@ -118,6 +121,7 @@ acpi:
 	envsubst < "$(CONF)/audio_jack" | tee "$$temp_file"; \
 	sudo install -Dm644 "$$temp_file" -T "$(ACPI)/audio_jack"
 	sudo systemctl enable acpid.service
+	sudo systemctl start acpid.service
 
 .PHONY: systemd_pre_sleep
 TARGETS += systemd_pre_sleep
