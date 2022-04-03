@@ -145,7 +145,7 @@ docker:
 
 .PHONY: pulse_secure
 TARGETS += pulse_secure
-docker:
+pulse_secure:
 	sudo systemctl enable pulsesecure.service
 	sudo systemctl start pulsesecure.service
 
