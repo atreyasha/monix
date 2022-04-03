@@ -65,6 +65,7 @@ For this first step, follow the instructions from the Arch Linux installation [g
     ```
     $ git -C $HOME clone https://github.com/atreyasha/monix.git
     $ cd $HOME/monix
+    $ make init
     $ make install
     ```
 
