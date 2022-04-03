@@ -134,3 +134,8 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
   systemctl is-active docker.service
   check_group_membership "docker"
 }
+
+@test "checking pulse-secure" {
+  systemctl is-enabled pulsesecure.service
+  systemctl is-active pulsesecure.service
+}
