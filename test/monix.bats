@@ -141,5 +141,5 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 }
 
 @test "checking microcode updates" {
-  sudo grep -E 'initrd\s*/boot/[a-z]+-ucode.img' "/boot/grub/grub.cfg"
+  sudo grep -E 'initrd\s+/boot/[a-z]+-ucode.img' "/boot/grub/grub.cfg"
 }
