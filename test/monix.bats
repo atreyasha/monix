@@ -139,3 +139,7 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
   systemctl is-enabled pulsesecure.service
   systemctl is-active pulsesecure.service
 }
+
+@test "checking microcode updates" {
+  sudo grep -E 'initrd\s*/boot/[a-z]+-ucode.img' "/boot/grub/grub.cfg"
+}
