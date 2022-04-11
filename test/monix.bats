@@ -130,7 +130,7 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 }
 
 @test "checking vbox" {
-  vboxmanage list systemproperties | grep -E '^[A-za-z ]+:\s+'"$HOME"'/vbox$'
+  vboxmanage list systemproperties | grep -E '^Default machine folder:\s+'"$HOME"'/vbox$'
 }
 
 @test "checking docker" {
