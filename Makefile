@@ -140,6 +140,11 @@ TARGETS += localectl
 localectl:
 	sudo localectl --no-convert set-x11-keymap de
 
+.PHONY: vbox
+TARGETS += vbox
+vbox:
+	vboxmanage setproperty machinefolder "$$HOME/vbox"
+
 .PHONY: docker
 TARGETS += docker
 docker:
