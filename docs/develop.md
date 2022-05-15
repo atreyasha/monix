@@ -86,7 +86,13 @@ Long-term
 
         1.  this could help for `pip` packages as well
 
-7.  Downgrade
+7.  Testing
+
+    1.  add feature to test full workflow in VM and check if tests pass
+        -\> would be most comprehensive and sensitive to upstream
+        updates
+
+8.  Downgrade
 
     1.  add pacman hook to update/log downgraded packages when feature
         is available upstream
@@ -107,7 +113,7 @@ Long-term
     5.  add a pacman hook which updates downgraded packages list in
         `monix` to keep records -\> add tests for check as well
 
-8.  Packages and cleaning
+9.  Packages and cleaning
 
     1.  look through `pacman` package list and remove unnecessary
         packages

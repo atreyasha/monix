@@ -40,6 +40,9 @@
 ****** think about adding ~sync~ functionality in case tests fail, which automatically corrects tests instead of expecting the user to do this manually 
 ******* this could help for ~pip~ packages as well
         
+***** Testing
+****** add feature to test full workflow in VM and check if tests pass -> would be most comprehensive and sensitive to upstream updates
+
 ***** Downgrade
 ****** add pacman hook to update/log downgraded packages when feature is available upstream
 ****** add workflow to install ~downgrade~ packages from a file when available upstream
