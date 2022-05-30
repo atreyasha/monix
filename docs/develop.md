@@ -27,7 +27,16 @@ Long-term
 
         2.  ideally, it should also support uninstallation
 
-2.  Network
+2.  Lenovo
+
+    1.  look into battery conservation or complete power down for GPU
+        except with CUDA
+
+    2.  look into `sd-umount` issues -\> failed to umount `/oldroot`:
+        <https://github.com/systemd/systemd/issues/14298> and
+        <https://bugs.archlinux.org/task/63697>
+
+3.  Network
 
     1.  find native way to truly disable wifi at boot without waiting
         for connection
@@ -38,7 +47,7 @@ Long-term
     3.  need to change many scripts in `monix` and `dotfiles` to reflect
         overall changes
 
-3.  File-system encryption
+4.  File-system encryption
 
     1.  practice this on new phyiscal system in September
 
@@ -53,7 +62,7 @@ Long-term
         cache of packages instead of always re-installing -\> think of
         the best way to do this, maybe with a shared folder
 
-4.  Conf-path management
+5.  Conf-path management
 
     1.  think about adding file or directory checks in `systemd`, `udev`
         and `acpi` rules, since these files could be missing if
@@ -73,12 +82,12 @@ Long-term
             a bad use of resources -\> also annoying since changes will
             always occur
 
-5.  General
+6.  General
 
     1.  Look into slow wifi disabling on login -\> appears to be slowed
         down due to docker booting up
 
-6.  Sync
+7.  Sync
 
     1.  think about adding `sync` functionality in case tests fail,
         which automatically corrects tests instead of expecting the user
@@ -86,13 +95,13 @@ Long-term
 
         1.  this could help for `pip` packages as well
 
-7.  Testing
+8.  Testing
 
     1.  add feature to test full workflow in VM and check if tests pass
         -\> would be most comprehensive and sensitive to upstream
         updates
 
-8.  Downgrade
+9.  Downgrade
 
     1.  add pacman hook to update/log downgraded packages when feature
         is available upstream
@@ -113,7 +122,7 @@ Long-term
     5.  add a pacman hook which updates downgraded packages list in
         `monix` to keep records -\> add tests for check as well
 
-9.  Packages and cleaning
+10. Packages and cleaning
 
     1.  look through `pacman` package list and remove unnecessary
         packages

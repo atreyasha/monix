@@ -13,6 +13,10 @@
 ******* this approach should be idempotent
 ******* ideally, it should also support uninstallation
 
+***** Lenovo 
+****** look into battery conservation or complete power down for GPU except with CUDA
+****** look into ~sd-umount~ issues -> failed to umount ~/oldroot~: https://github.com/systemd/systemd/issues/14298 and https://bugs.archlinux.org/task/63697
+
 ***** Network
 ****** find native way to truly disable wifi at boot without waiting for connection
 ****** consider changing to another network manager such as ~connman~ for faster boot and resolving
