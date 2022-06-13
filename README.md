@@ -16,7 +16,7 @@ $ make init
 
 ## Installation
 
-### Live medium
+<details><summary>Live medium</summary><p>
 
 For this first step, follow the instructions from the Arch Linux installation [guide](https://wiki.archlinux.org/title/Installation_guide).
 
@@ -26,7 +26,8 @@ For this first step, follow the instructions from the Arch Linux installation [g
 # pacstrap /mnt base base-devel linux-lts linux-firmware vim git networkmanager
 ```
 
-### Post reboot
+</p></details>
+<details><summary>Post reboot</summary>
 
 1. Log in to the freshly installed Arch Linux system as `root`
 
@@ -81,6 +82,8 @@ For this first step, follow the instructions from the Arch Linux installation [g
 10. If you have any private dotfiles and data, deploy them now. In order to benefit from all the features of the `dotfiles` repository, rename your private dotfiles repository as `privates` and place it in your `$HOME` directory. This `privates` repository should contain a `Makefile` with a `test` target
 
 11. Reboot and enjoy!
+
+</p></details>
 
 ## Test
 
