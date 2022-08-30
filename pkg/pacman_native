@@ -156,6 +156,7 @@ python-jsonschema
 python-keyring
 python-pip
 python-poetry
+python-pre-commit
 python-virtualenv
 python2
 python2-setuptools
