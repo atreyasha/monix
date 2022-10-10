@@ -159,8 +159,6 @@ python-pip
 python-poetry
 python-pre-commit
 python-virtualenv
-python2
-python2-setuptools
 qrencode
 qt5-sensors
 qt5-wayland
