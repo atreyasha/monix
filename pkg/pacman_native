@@ -153,6 +153,7 @@ pulseaudio-alsa
 pyenv
 python-babel
 python-black
+python-isort
 python-jsonschema
 python-keyring
 python-pip
