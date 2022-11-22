@@ -47,6 +47,7 @@ flex
 gawk
 gcc
 gcc-fortran
+gcr
 gettext
 gifsicle
 gifski
