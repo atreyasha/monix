@@ -138,7 +138,7 @@ openssh
 p7zip
 pacman
 pacman-contrib
-pandoc
+pandoc-cli
 pass
 patch
 pdftk
