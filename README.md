@@ -26,6 +26,8 @@ For this first step, follow the instructions from the Arch Linux installation [g
 # pacstrap /mnt base base-devel linux-lts linux-firmware vim git networkmanager
 ```
 
+**Note:** `nvidia` may not boot for Linux kernels 5.18 or greater, see issue [here](https://bbs.archlinux.org/viewtopic.php?id=283783) and [here](https://wiki.archlinux.org/title/NVIDIA). In this case, set the `ibt=off` kernel parameter in the boot loader.
+
 </p></details>
 <details><summary>Post reboot</summary>
 
