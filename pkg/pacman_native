@@ -181,7 +181,6 @@ sed
 shellcheck
 shfmt
 signal-desktop
-simplescreenrecorder
 slop
 sqlitebrowser
 stow
