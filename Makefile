@@ -57,7 +57,7 @@ downgrade_conf:
 .PHONY: pip_pkgs
 TARGETS += pip_pkgs
 pip_pkgs:
-	pip install --user -r "pkg/requirements.txt"
+	pip install --user --break-system-packages -r "pkg/requirements.txt"
 
 .PHONY: ufw
 TARGETS += ufw
