@@ -36,6 +36,7 @@ docker-compose
 docopt
 efibootmgr
 emacs
+eslint
 fakeroot
 fd
 feh
@@ -148,6 +149,7 @@ perl-file-mimeinfo
 picom
 pkgconf
 postgresql-libs
+prettier
 pulseaudio
 pulseaudio-alsa
 pyenv
@@ -207,6 +209,7 @@ tlp-rdw
 tmux
 ttf-bitstream-vera-mono-nerd
 ttf-dejavu
+typescript-language-server
 ueberzug
 ufw
 unixodbc
@@ -216,6 +219,8 @@ vi
 virtualbox
 virtualbox-guest-iso
 virtualbox-host-dkms
+vscode-css-languageserver
+vscode-html-languageserver
 w3m
 webkit2gtk
 wget
