@@ -148,6 +148,7 @@ perl-anyevent-i3
 perl-file-mimeinfo
 picom
 pkgconf
+pnpm
 postgresql-libs
 prettier
 pulseaudio
