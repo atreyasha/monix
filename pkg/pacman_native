@@ -158,6 +158,7 @@ python-black
 python-isort
 python-jsonschema
 python-keyring
+python-lsp-server
 python-pip
 python-poetry
 python-pre-commit
