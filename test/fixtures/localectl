@@ -1,3 +1,3 @@
    System Locale: LANG=en_US.UTF-8
-       VC Keymap: us
-      X11 Layout: us,de
+       VC Keymap: de_CH-latin1
+      X11 Layout: ch

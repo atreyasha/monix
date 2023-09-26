@@ -138,7 +138,7 @@ base_dirs:
 .PHONY: localectl
 TARGETS += localectl
 localectl:
-	sudo localectl --no-convert set-x11-keymap us,de
+	sudo localectl --no-convert set-x11-keymap ch
 
 .PHONY: vbox
 TARGETS += vbox

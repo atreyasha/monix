@@ -68,6 +68,7 @@ For this first step, follow the instructions from the Arch Linux installation [g
     ```
     $ git -C $HOME clone https://github.com/atreyasha/monix.git
     $ cd $HOME/monix
+    $ git checkout lenovo
     $ make init
     $ make install
     ```
@@ -77,6 +78,7 @@ For this first step, follow the instructions from the Arch Linux installation [g
     ```
     $ git -C $HOME clone https://github.com/atreyasha/dotfiles.git
     $ cd $HOME/dotfiles
+    $ git checkout lenovo
     $ make init
     $ make install
     ```
