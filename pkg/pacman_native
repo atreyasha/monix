@@ -149,6 +149,7 @@ perl-file-mimeinfo
 picom
 pkgconf
 postgresql-libs
+pre-commit
 prettier
 pulseaudio
 pulseaudio-alsa
@@ -161,7 +162,6 @@ python-keyring
 python-lsp-server
 python-pip
 python-poetry
-python-pre-commit
 python-virtualenv
 qrencode
 qt5-sensors
