@@ -144,6 +144,7 @@ localectl:
 TARGETS += vbox
 vbox:
 	vboxmanage setproperty machinefolder "$$HOME/vbox"
+	sudo usermod -a -G "vboxusers" "$$USER"
 
 .PHONY: docker
 TARGETS += docker
