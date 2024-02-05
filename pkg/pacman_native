@@ -11,7 +11,7 @@ aspell-en
 autoconf
 automake
 base
-bash-bats
+bats
 bc
 biber
 binutils
@@ -95,7 +95,6 @@ libnotify
 libtool
 libvoikko
 libxss
-light
 linux-firmware
 linux-lts
 linux-lts-headers
