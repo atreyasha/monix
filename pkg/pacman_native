@@ -192,8 +192,10 @@ sxiv
 sysfsutils
 sysstat
 texinfo
+texlab
 texlive-basic
 texlive-bibtexextra
+texlive-binextra
 texlive-fontsextra
 texlive-formatsextra
 texlive-games
