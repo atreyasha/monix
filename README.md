@@ -23,7 +23,7 @@ For this first step, follow the instructions from the Arch Linux installation [g
 **Important:** During the `pacstrap` phase where basic packages are installed before `chroot`, use the command below instead. This ensures a text editor and an active internet connection will be available after `chroot` and the first reboot.
 
 ```
-# pacstrap /mnt base base-devel linux-lts linux-firmware vim git networkmanager
+# pacstrap -K /mnt base base-devel linux-lts linux-firmware vim git networkmanager
 ```
 
 **Note:** `nvidia` may not boot for Linux kernels 5.18 or greater, see issue [here](https://bbs.archlinux.org/viewtopic.php?id=283783) and [here](https://wiki.archlinux.org/title/NVIDIA). In this case, set the `ibt=off` kernel parameter in the boot loader.
