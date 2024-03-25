@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Post-commit hook to rebase secondary branch with primary branch
+set -e
 
 rebase_branch() {
   # parse inputs and create local variables
