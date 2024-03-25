@@ -184,7 +184,6 @@ scrot
 sed
 shellcheck
 shfmt
-signal-desktop
 slop
 sqlitebrowser
 stow
