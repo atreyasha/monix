@@ -224,7 +224,6 @@ virtualbox-guest-iso
 virtualbox-host-dkms
 vscode-css-languageserver
 vscode-html-languageserver
-vue-language-server
 w3m
 webkit2gtk
 wget
