@@ -153,12 +153,6 @@ docker:
 	sudo systemctl start docker.service
 	sudo usermod -a -G "docker" "$$USER"
 
-.PHONY: pulse_secure
-TARGETS += pulse_secure
-pulse_secure:
-	sudo systemctl enable pulsesecure.service
-	sudo systemctl start pulsesecure.service
-
 .PHONY: install
 install: $(TARGETS)
 
