@@ -14,6 +14,12 @@ check_group_membership() {
   return 1
 }
 
+check_unit_is_masked(){
+  local service="$1"
+  systemctl status "$service" | \
+    grep "Loaded: masked" &>/dev/null
+}
+
 # check for VM and assign variable
 grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 
@@ -91,9 +97,11 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 }
 
 @test "checking tlp" {
+  cmp "conf/tlp.conf" "/etc/tlp.conf"
   systemctl is-enabled tlp.service
   systemctl is-active tlp.service
-  cmp "conf/tlp.conf" "/etc/tlp.conf"
+  check_unit_is_masked systemd-rfkill.service
+  check_unit_is_masked systemd-rfkill.socket
 }
 
 @test "checking udev" {

@@ -102,6 +102,8 @@ tlp:
 	sudo install -Dm644 "$(CONF)/tlp.conf" -t "/etc"
 	sudo systemctl enable tlp.service
 	sudo systemctl start tlp.service
+	sudo systemctl mask systemd-rfkill.service
+	sudo systemctl mask systemd-rfkill.socket
 
 .PHONY: udev
 TARGETS += udev
