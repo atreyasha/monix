@@ -96,15 +96,6 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
   check_unit_is_masked systemd-rfkill.socket
 }
 
-@test "checking udev" {
-  status="$(envsubst < conf/60-onbattery.rules | xargs)"
-  compare="$(cat /etc/udev/rules.d/60-onbattery.rules | xargs)"
-  [ "$status" = "$compare" ]
-  status="$(envsubst < conf/61-onpower.rules | xargs)"
-  compare="$(cat /etc/udev/rules.d/61-onpower.rules | xargs)"
-  [ "$status" = "$compare" ]
-}
-
 @test "checking acpi" {
   systemctl is-enabled acpid.service
   systemctl is-active acpid.service

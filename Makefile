@@ -1,6 +1,5 @@
 PACMAN    ?= /etc/pacman.d
 SYSTEMD   ?= /etc/systemd/system
-UDEV      ?= /etc/udev/rules.d
 DOWNGRADE ?= /etc/xdg/downgrade
 MODPROBE  ?= /etc/modprobe.d
 CONF      ?= ./conf
@@ -93,17 +92,6 @@ tlp:
 	sudo systemctl start tlp.service
 	sudo systemctl mask systemd-rfkill.service
 	sudo systemctl mask systemd-rfkill.socket
-
-.PHONY: udev
-TARGETS += udev
-udev:
-	temp_file="$$(mktemp)"; \
-	envsubst < "$(CONF)/60-onbattery.rules" | tee "$$temp_file"; \
-	sudo install -Dm644 "$$temp_file" -T "$(UDEV)/60-onbattery.rules"
-	temp_file="$$(mktemp)"; \
-	envsubst < "$(CONF)/61-onpower.rules" | tee "$$temp_file"; \
-	sudo install -Dm644 "$$temp_file" -T "$(UDEV)/61-onpower.rules"
-	sudo udevadm control --reload
 
 .PHONY: acpi
 TARGETS += acpi

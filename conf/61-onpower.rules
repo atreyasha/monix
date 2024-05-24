@@ -1,3 +1,0 @@
-# Refresh i3blocks when switching to power
-# Source: https://wiki.archlinux.org/title/udev#About_udev_rules
-SUBSYSTEM=="power_supply",ENV{POWER_SUPPLY_ONLINE}=="1",RUN+="$HOME/bin/refresh-i3blocks-battery"
