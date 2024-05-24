@@ -101,11 +101,6 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
   systemctl is-active acpid.service
 }
 
-@test "checking systemd_pre_sleep" {
-  systemctl is-enabled "pre-sleep@$USER.service"
-  cmp "conf/pre-sleep@.service" "/etc/systemd/system/pre-sleep@.service"
-}
-
 @test "checking base_dirs" {
   [ -d "$HOME/desktop" ]
   [ -d "$HOME/downloads" ]

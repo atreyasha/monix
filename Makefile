@@ -1,5 +1,4 @@
 PACMAN    ?= /etc/pacman.d
-SYSTEMD   ?= /etc/systemd/system
 DOWNGRADE ?= /etc/xdg/downgrade
 MODPROBE  ?= /etc/modprobe.d
 CONF      ?= ./conf
@@ -98,12 +97,6 @@ TARGETS += acpi
 acpi:
 	sudo systemctl enable acpid.service
 	sudo systemctl start acpid.service
-
-.PHONY: systemd_pre_sleep
-TARGETS += systemd_pre_sleep
-systemd_pre_sleep:
-	sudo install -Dm644 "$(CONF)/pre-sleep@.service" -t "$(SYSTEMD)"
-	sudo systemctl enable "pre-sleep@$$USER.service"
 
 .PHONY: base_dirs
 TARGETS += base_dirs
