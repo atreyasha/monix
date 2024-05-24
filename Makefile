@@ -1,8 +1,6 @@
 PACMAN    ?= /etc/pacman.d
-ACPI      ?= /etc/acpi/events
 SYSTEMD   ?= /etc/systemd/system
 UDEV      ?= /etc/udev/rules.d
-UFW       ?= /etc/ufw
 DOWNGRADE ?= /etc/xdg/downgrade
 MODPROBE  ?= /etc/modprobe.d
 CONF      ?= ./conf
