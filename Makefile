@@ -59,15 +59,6 @@ TARGETS += pip_pkgs
 pip_pkgs:
 	pip install --user --break-system-packages -r "pkg/requirements.txt"
 
-.PHONY: ufw
-TARGETS += ufw
-ufw:
-	sudo systemctl enable ufw.service
-	sudo systemctl start ufw.service
-	sudo ufw default deny incoming
-	sudo ufw default allow outgoing
-	sudo ufw enable || sudo install -Dm644 "$(CONF)/ufw.conf" -t "$(UFW)"
-
 .PHONY: zsh
 TARGETS += zsh
 zsh:
