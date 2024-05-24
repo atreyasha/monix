@@ -110,9 +110,6 @@ udev:
 .PHONY: acpi
 TARGETS += acpi
 acpi:
-	temp_file="$$(mktemp)"; \
-	envsubst < "$(CONF)/audio_jack" | tee "$$temp_file"; \
-	sudo install -Dm644 "$$temp_file" -T "$(ACPI)/audio_jack"
 	sudo systemctl enable acpid.service
 	sudo systemctl start acpid.service
 

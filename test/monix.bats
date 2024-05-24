@@ -108,9 +108,6 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
 @test "checking acpi" {
   systemctl is-enabled acpid.service
   systemctl is-active acpid.service
-  status="$(envsubst < conf/audio_jack | xargs)"
-  compare="$(cat /etc/acpi/events/audio_jack | xargs)"
-  [ "$status" = "$compare" ]
 }
 
 @test "checking systemd_pre_sleep" {
