@@ -96,11 +96,6 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
   check_unit_is_masked systemd-rfkill.socket
 }
 
-@test "checking acpi" {
-  systemctl is-enabled acpid.service
-  systemctl is-active acpid.service
-}
-
 @test "checking base_dirs" {
   [ -d "$HOME/desktop" ]
   [ -d "$HOME/downloads" ]

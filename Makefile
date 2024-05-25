@@ -92,12 +92,6 @@ tlp:
 	sudo systemctl mask systemd-rfkill.service
 	sudo systemctl mask systemd-rfkill.socket
 
-.PHONY: acpi
-TARGETS += acpi
-acpi:
-	sudo systemctl enable acpid.service
-	sudo systemctl start acpid.service
-
 .PHONY: base_dirs
 TARGETS += base_dirs
 base_dirs:
