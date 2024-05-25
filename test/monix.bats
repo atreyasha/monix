@@ -84,7 +84,7 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
   [ "blacklist pcspkr" = "$(cat /etc/modprobe.d/nobeep.conf)" ]
 }
 
-@test "checking light" {
+@test "checking brightnessctl" {
   check_group_membership "video"
 }
 

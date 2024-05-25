@@ -78,9 +78,9 @@ TARGETS += disable_beep
 disable_beep:
 	echo "blacklist pcspkr" | sudo tee "$(MODPROBE)/nobeep.conf"
 
-.PHONY: light
-TARGETS += light
-light:
+.PHONY: brightnessctl
+TARGETS += brightnessctl
+brightnessctl:
 	sudo usermod -a -G "video" "$$USER"
 
 .PHONY: tlp
