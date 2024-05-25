@@ -74,9 +74,9 @@ hspell
 htop
 hunspell-en_us
 i3-wm
-i3blocks
 i3lock
 i3status
+i3status-rust
 imagemagick
 inetutils
 inkscape
@@ -215,6 +215,7 @@ ttf-dejavu
 typescript-language-server
 ueberzug
 unixodbc
+upower
 usbutils
 vagrant
 vi
