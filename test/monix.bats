@@ -1,6 +1,4 @@
-#!/usr/bin/env bats
 # -*- mode: shell-script -*-
-# vim: syntax=sh
 
 # include function to check for group membership
 check_group_membership() {
