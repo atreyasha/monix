@@ -213,6 +213,7 @@ ttf-dejavu
 typescript-language-server
 ueberzug
 unixodbc
+unzip
 upower
 usbutils
 vagrant
@@ -239,5 +240,6 @@ xournalpp
 xsel
 zathura
 zathura-pdf-mupdf
+zip
 zsh
 zsh-completions
