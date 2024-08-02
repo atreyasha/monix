@@ -73,6 +73,7 @@ jdk-openjdk
 jfsutils
 jq
 jsoncpp
+jupyter-notebook
 ladspa
 libappindicator-gtk3
 libfbclient
