@@ -23,10 +23,18 @@ For this first step, follow the instructions from the Arch Linux installation [g
 **Important:** During the `pacstrap` phase where basic packages are installed before `chroot`, use the command below instead. This ensures a text editor and an active internet connection will be available after `chroot` and the first reboot.
 
 ```
+# pacman-key --init
+# pacman-key --populate
 # pacstrap -K /mnt base base-devel linux-lts linux-firmware vim git networkmanager
 ```
 
-**Note:** `nvidia` may not boot for Linux kernels 5.18 or greater, see issue [here](https://bbs.archlinux.org/viewtopic.php?id=283783) and [here](https://wiki.archlinux.org/title/NVIDIA). In this case, set the `ibt=off` kernel parameter in the boot loader.
+**Note:** Some common troubleshooting:
+
+1. For system encryption, depending on how you encrypt Arch Linux, you may need to install additional packages such as `lvm2`. Take note of special instructions in this Arch Wiki [page](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system), especially for partitioning, `mkinitcpio` and `grub`.
+
+2. For dual booting, follow this Arch Wiki [page](https://wiki.archlinux.org/title/Dual_boot_with_Windows) closely and enable [`os-prober`](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system) in `grub` for discovering additional OS's.
+
+3. `nvidia` may not boot for Linux kernels 5.18 or greater, see issue [here](https://bbs.archlinux.org/viewtopic.php?id=283783) and [here](https://wiki.archlinux.org/title/NVIDIA). In this case, set the `ibt=off` kernel parameter in the boot loader.
 
 </p></details>
 <details><summary>Post reboot</summary>
@@ -84,6 +92,11 @@ For this first step, follow the instructions from the Arch Linux installation [g
 10. If you have any private dotfiles and data, deploy them now. In order to benefit from all the features of the `dotfiles` repository, rename your private dotfiles repository as `privates` and place it in your `$HOME` directory. This `privates` repository should contain a `Makefile` with a `test` target
 
 11. Reboot and enjoy!
+
+**Note:** Some common troubleshooting:
+
+1. Decrease GRUB [resolution](https://wiki.archlinux.org/title/GRUB/Tips_and_tricks#Setting_the_framebuffer_resolution) in case it is hard to read or laggy.
+2. Manually add [timeservers](https://wiki.archlinux.org/title/Systemd-timesyncd#Configuration) such as `time.google.com` in case the default timeservers do not work.
 
 </p></details>
 
