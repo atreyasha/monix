@@ -28,7 +28,7 @@ For this first step, follow the instructions from the Arch Linux installation [g
 # pacstrap -K /mnt base base-devel linux-lts linux-firmware vim git networkmanager
 ```
 
-**Note:** Some common troubleshooting:
+**Note:** Additional details:
 
 1. For system encryption, depending on how you encrypt Arch Linux, you may need to install additional packages such as `lvm2`. Take note of special instructions in this Arch Wiki [page](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system), especially for partitioning, `mkinitcpio` and `grub`.
 
