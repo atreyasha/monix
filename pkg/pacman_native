@@ -81,9 +81,9 @@ libmicrohttpd
 libnotify
 libvoikko
 libxss
+linux
 linux-firmware
-linux-lts
-linux-lts-headers
+linux-headers
 llvm
 logrotate
 lsof
@@ -214,6 +214,7 @@ xfsprogs
 xorg-server
 xorg-server-xvfb
 xorg-xinit
+xorg-xinput
 xorg-xprop
 xournalpp
 xsel
