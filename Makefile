@@ -61,7 +61,7 @@ ufw:
 	sudo systemctl start ufw.service
 	sudo ufw default deny incoming
 	sudo ufw default allow outgoing
-	sudo ufw enable || sudo install -Dm644 "$(CONF)/ufw.conf" -t "$(UFW)"
+	sudo ufw enable
 
 .PHONY: zsh
 TARGETS += zsh
