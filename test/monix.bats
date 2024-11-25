@@ -58,6 +58,14 @@ grep "hypervisor" "/proc/cpuinfo" &>/dev/null && VM="1" || VM="0"
   [ "$status" = "$compare" ]
 }
 
+@test "checking ufw" {
+  systemctl is-enabled ufw.service
+  systemctl is-active ufw.service
+  status="$(sudo ufw status verbose | xargs)"
+  compare="$(cat test/fixtures/ufw_status | xargs)"
+  [ "$status" = "$compare" ]
+}
+
 @test "checking zsh" {
   shell="$(getent passwd $USER | cut -d: -f7)"
   [ "$shell" = "/usr/bin/zsh" ]
