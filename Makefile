@@ -111,11 +111,13 @@ TARGETS += localectl
 localectl:
 	sudo localectl --no-convert set-x11-keymap us,de
 
-.PHONY: vbox
-TARGETS += vbox
-vbox:
-	vboxmanage setproperty machinefolder "$$HOME/vbox"
-	sudo usermod -a -G "vboxusers" "$$USER"
+.PHONY: vmware
+TARGETS += vmware
+vmware:
+	sudo systemctl start vmware-networks-configuration.service
+	sudo systemctl enable vmware-networks.service
+	sudo systemctl enable vmware-usbarbitrator.service
+	sudo modprobe -a vmw_vmci vmmon
 
 .PHONY: docker
 TARGETS += docker

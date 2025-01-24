@@ -198,11 +198,9 @@ upower
 usbutils
 vagrant
 vi
-virtualbox
-virtualbox-guest-iso
-virtualbox-host-dkms
 vscode-css-languageserver
 vscode-html-languageserver
+vulkan-intel
 w3m
 webkit2gtk
 wget
