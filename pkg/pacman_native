@@ -81,9 +81,9 @@ libmicrohttpd
 libnotify
 libvoikko
 libxss
+linux
 linux-firmware
-linux-lts
-linux-lts-headers
+linux-headers
 llvm
 logrotate
 lsof
