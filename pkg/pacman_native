@@ -1,10 +1,9 @@
+7zip
 adobe-source-han-sans-otc-fonts
 alacritty
 alsa-tools
 alsa-utils
 arandr
-arc-gtk-theme
-arc-icon-theme
 aspell-en
 base
 base-devel
@@ -25,6 +24,7 @@ dash
 dhcpcd
 dialog
 discount
+dmidecode
 docbook-xml
 docbook-xsl
 docker
@@ -33,6 +33,7 @@ docopt
 efibootmgr
 emacs
 eslint
+exfatprogs
 fd
 feh
 firefox
@@ -55,6 +56,8 @@ gst-plugins-base
 gst-plugins-ugly
 gtk-engine-murrine
 gvim
+haskell-megaparsec
+haskell-parser-combinators
 hspell
 htop
 hunspell-en_us
@@ -62,6 +65,7 @@ i3-wm
 i3lock
 i3status
 i3status-rust
+ibus
 imagemagick
 inetutils
 inkscape
@@ -106,6 +110,7 @@ net-tools
 netcdf
 netctl
 networkmanager
+ninja
 nm-connection-editor
 nodejs
 notmuch
@@ -114,6 +119,7 @@ noto-fonts-emoji
 npm
 nss-mdns
 ntfs-3g
+nvm
 ocl-icd
 odt2txt
 openconnect
@@ -128,6 +134,7 @@ peek
 perl-anyevent-i3
 perl-file-mimeinfo
 picom
+pipewire
 postgresql-libs
 pre-commit
 prettier
@@ -151,12 +158,10 @@ qt5ct
 qt6ct
 qutebrowser
 ranger
-reiserfsprogs
 ripgrep
 rofi
 rsync
 ruby
-ruby2.7
 s-nail
 screenkey
 scrot
@@ -196,12 +201,14 @@ unixodbc
 unzip
 upower
 usbutils
+uusi
 vagrant
 vi
 vscode-css-languageserver
 vscode-html-languageserver
 vulkan-intel
 w3m
+wayland-protocols
 webkit2gtk
 wget
 words

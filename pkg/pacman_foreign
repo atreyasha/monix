@@ -1,4 +1,6 @@
 abook
+arc-gtk-theme
+arc-icon-theme
 aur-release-git
 downgrade
 google-chrome
@@ -7,9 +9,11 @@ i3lock-fancy-rapid-git
 mons
 mutt-wizard-git
 ngrok
+nixfmt
 nodejs-vmd
-nvm
 otf-font-awesome-4
+reiserfsprogs
+ruby2.7
 simplescreenrecorder
 ttf-all-the-icons
 unclutter-xfixes-git
