@@ -38,7 +38,6 @@ exfatprogs
 fd
 feh
 firefox
-flake8
 gcc-fortran
 gcr
 gifsicle
@@ -143,6 +142,7 @@ pulseaudio-alsa
 pyenv
 python-babel
 python-black
+python-flake8
 python-isort
 python-jsonschema
 python-keyring
@@ -202,7 +202,6 @@ unzip
 upower
 usbutils
 uusi
-vagrant
 vi
 vscode-css-languageserver
 vscode-html-languageserver
